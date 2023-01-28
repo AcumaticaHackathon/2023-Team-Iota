@@ -11,7 +11,7 @@ namespace AcuConvert.Core.Models.Data
 {
     public class Field
     {
-        public Field(string fieldName, TypeCode dataType, bool isKey)
+        public Field(string fieldName, string dataType, bool isKey)
         {
             FieldName = fieldName ?? throw new ArgumentNullException(nameof(fieldName));
             DataType  = dataType;
@@ -19,7 +19,7 @@ namespace AcuConvert.Core.Models.Data
         }
 
         public string   FieldName { get; }
-        public TypeCode DataType  { get; }
+        public string DataType  { get; }
         public bool     IsKey     { get; }
         public object   Value     { get; set; }
     }
