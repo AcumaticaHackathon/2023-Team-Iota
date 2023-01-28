@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AcuConvert.Core\AcuConvert.Core.csproj" />
+    </ItemGroup>
+
 </Project>

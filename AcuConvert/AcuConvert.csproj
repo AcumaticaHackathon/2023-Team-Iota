@@ -8,4 +8,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AcuConvert.Acumatica\AcuConvert.Acumatica.csproj" />
+      <ProjectReference Include="..\AcuConvert.Core\AcuConvert.Core.csproj" />
+      <ProjectReference Include="..\AcuConvert.Sage500\AcuConvert.Sage500.csproj" />
+    </ItemGroup>
+
 </Project>
