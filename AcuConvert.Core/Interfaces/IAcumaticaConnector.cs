@@ -8,12 +8,14 @@
 #endregion
 
 using AcuConvert.Core.Models;
+using AcuConvert.Core.Models.Data;
 
 namespace AcuConvert.Core.Interfaces
 {
     public interface IAcumaticaConnector
     {
-        void               SendRow(Row          row);
-        IEnumerable<Field> GetSchema(EntityType type);
+        void               Initialize(AcumaticaConnectionContext context);
+        void               SendRow(Row                           row);
+        IEnumerable<Field> GetSchema(string acuObject);
     }
 }

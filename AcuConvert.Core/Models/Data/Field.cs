@@ -7,7 +7,7 @@
 // ----------------------------------------------------------------------------------
 #endregion
 
-namespace AcuConvert.Core.Models
+namespace AcuConvert.Core.Models.Data
 {
     public class Field
     {

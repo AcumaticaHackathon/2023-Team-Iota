@@ -7,14 +7,13 @@
 // ----------------------------------------------------------------------------------
 #endregion
 
-using AcuConvert.Core.Models;
 using AcuConvert.Core.Models.Data;
 
-namespace AcuConvert.Core.Interfaces
+namespace AcuConvert.Core.Models
 {
-    public interface ILegacyConnector
+    public class Row
     {
-        IEnumerable<Field> GetSchema(LegacyConnectionContext type);
-        IEnumerable<Row>   GetDataSet(DateTime               lastRunDate);
+        public Guid?       NoteId { get; set; }
+        public List<Field> Fields { get; set; } = new();
     }
 }

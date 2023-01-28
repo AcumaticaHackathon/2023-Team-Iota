@@ -9,8 +9,10 @@
 
 namespace AcuConvert.Core.Models
 {
-    public class Row
+    public class SyncConnection
     {
-        public List<Field> Fields { get; set; } = new();
+        public AcumaticaConnectionContext AcumaticaConnectionContext { get; set; }
+        public LegacyConnectionContext    LegacyConnectionContext    { get; set; }
+        
     }
 }
