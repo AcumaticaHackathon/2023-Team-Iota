@@ -15,6 +15,6 @@ namespace AcuConvert.Core.Interfaces
     public interface ILegacyConnector
     {
         IEnumerable<Field> GetSchema(LegacyConnectionContext type);
-        IEnumerable<Row>   GetDataSet(DateTime               lastRunDate);
+        IEnumerable<Row>   GetDataSet(LegacyConnectionContext type, DateTime lastRunDate);
     }
 }

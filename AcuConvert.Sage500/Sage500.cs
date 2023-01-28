@@ -34,13 +34,10 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector
 
             foreach (DataRow row in schemaTable.Rows)
             {
-                foreach (DataColumn column in schemaTable.Columns)
-                {
                     // add entry to ReturnFields list for each
 
                     // need to map db data types to TypeCode
                     returnfields.Add(new Field(column.ColumnName, TypeCode.String, false));
-                }
             }
             sqlReader.Close();
             sqlCmd.Dispose();
