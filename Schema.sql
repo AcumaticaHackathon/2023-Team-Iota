@@ -1,33 +1,23 @@
-DROP TABLE  [dbo].ConnectionSetting
+DROP TABLE  [dbo].SourceConnectionSetting
 GO
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
-              WHERE TABLE_NAME = 'ConnectionSetting')
+              WHERE TABLE_NAME = 'SourceConnectionSetting')
 BEGIN
 
-   CREATE TABLE [dbo].ConnectionSetting(
-      SettingID NVARCHAR(30) NOT NULL,
-	  IsDest bit NOT NULL DEFAULT(0),
-	  Value VARCHAR(1026) NOT NULL
+   CREATE TABLE [dbo].SourceConnectionSetting(
+      SettingID NVARCHAR(30) NOT NULL
+	, Value VARCHAR(1026) NOT NULL
 
-	CONSTRAINT [ConnectionSetting_PK] PRIMARY KEY ([SettingID] )
+	CONSTRAINT [SourceConnectionSetting_PK] PRIMARY KEY ([SettingID] )
    )
 END   
 GO
 
-
 -- Source ERP system
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemoteDatasource','(local)')
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemoteInitCatalog','Hackathon')
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemoteUserID','sa')
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemotePassword','')
-
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalDatasource','(local)')
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalInitCatalog','AcuConvert')
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalUserID','sa')
-Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalPassword','')
-
-
-
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('Datasource','(local)')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('InitCatalog','Hackathon')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('UserID','sa')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('Password','')
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncInstance')
@@ -85,22 +75,21 @@ GO
 
 
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustKey','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustID' ,'')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustName','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Status','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustID' ,'CustomerID')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustName','CustomerName')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Status','Status')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CreateDate','')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','UpdateDate','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustClassID','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','GLAcctNo','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine1','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine2','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','City','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','StateID','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Name','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Phone','')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','EmailAddr','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustClassID','CustomerClass')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine1','Address.addressLine1')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine2','Address.addressLine2')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address.countryID')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','City','Address.City')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','StateID','Address.State')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address.CountryID')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Name','Contact.FirstName')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Phone','Contact.Phone1')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','EmailAddr','Contact.EMail')
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncRow')
@@ -126,7 +115,6 @@ BEGIN
       InstanceID VARCHAR(15) NOT NULL
 	, RowNbr INT NOT NULL
 	, SourceFieldName NVARCHAR(256) NOT NULL
-	, IsKey bit NOT NULL DEFAULT 0
 	, DataType NVARCHAR(125) NOT NULL
 	, Value NVARCHAR(1026) NULL
 

@@ -47,7 +47,7 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
                     for (int i = 0; i < sqlReader.FieldCount; i++)
                     {
                         Field f = new Field(sqlReader.GetName(i), sqlReader.GetValue(i).GetType().ToString(), false);
-                        f.Value = sqlReader.GetValue(i);
+                        f.Value = sqlReader.GetValue(i).ToString();
 
                         r.AddField(f);
                     }
@@ -55,13 +55,11 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
                     returnrows.Add(r);
                 }
             }
-
-
+            
             sqlReader.Close();
             sqlCmd.Dispose();
             sqlCnn.Close();
-
-
+            
             return returnrows;
         }
         catch (Exception ex)

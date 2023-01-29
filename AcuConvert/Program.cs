@@ -1,3 +1,4 @@
+using AcuConvert.Core;
 using AcuConvert.Core.Interfaces;
 using AcuConvert.Core.Workers;
 using AcuConvert.Persistence;
@@ -33,7 +34,7 @@ static class Program
                         services.AddTransient<ISyncWorker,SyncWorker>();
                         services.AddTransient<SyncConnectionBuilder>();
                         services.AddTransient<ISyncRepository,Repository>();
-                        // services.AddTransient<IAcumaticaConnector,>();
+                        services.AddTransient<IAcumaticaConnector,AcumaticaConnector>();
                         services.AddTransient<ILegacyConnector,Sage500.Sage500>();
                         
                         services.AddTransient<Form1>();

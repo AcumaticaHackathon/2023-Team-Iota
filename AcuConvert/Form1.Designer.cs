@@ -42,20 +42,28 @@ partial class Form1
             this.lblSourceSQLConnection = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabAR = new System.Windows.Forms.TabPage();
+            this.grdExceptions = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.grpCustomerAddress = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtWhereCustAddr = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSelectCustAddr = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblWhere1 = new System.Windows.Forms.Label();
             this.txtWhereCustomer = new System.Windows.Forms.TextBox();
             this.lblSelect = new System.Windows.Forms.Label();
             this.txtFromCustomer = new System.Windows.Forms.TextBox();
             this.chkProcessCustomers = new System.Windows.Forms.CheckBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.grpCustomerAddress = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtWhereCustAddr = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSelectCustAddr = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabAP = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabGL = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -68,9 +76,13 @@ partial class Form1
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabAR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdExceptions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.grpCustomerAddress.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.grpCustomerAddress.SuspendLayout();
+            this.tabAP.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,6 +90,7 @@ partial class Form1
             // 
             this.tabControl1.Controls.Add(this.tabSettings);
             this.tabControl1.Controls.Add(this.tabAR);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabAP);
             this.tabControl1.Controls.Add(this.tabGL);
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -186,8 +199,8 @@ partial class Form1
             // 
             // tabAR
             // 
+            this.tabAR.Controls.Add(this.grdExceptions);
             this.tabAR.Controls.Add(this.dataGridView1);
-            this.tabAR.Controls.Add(this.grpCustomerAddress);
             this.tabAR.Controls.Add(this.groupBox1);
             this.tabAR.Location = new System.Drawing.Point(4, 24);
             this.tabAR.Name = "tabAR";
@@ -198,74 +211,25 @@ partial class Form1
             this.tabAR.UseVisualStyleBackColor = true;
             this.tabAR.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // grdExceptions
+            // 
+            this.grdExceptions.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.grdExceptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdExceptions.Location = new System.Drawing.Point(14, 420);
+            this.grdExceptions.Name = "grdExceptions";
+            this.grdExceptions.RowTemplate.Height = 25;
+            this.grdExceptions.Size = new System.Drawing.Size(1105, 230);
+            this.grdExceptions.TabIndex = 22;
+            // 
             // dataGridView1
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(91, 221);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 221);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(676, 273);
+            this.dataGridView1.Size = new System.Drawing.Size(1105, 193);
             this.dataGridView1.TabIndex = 21;
-            // 
-            // grpCustomerAddress
-            // 
-            this.grpCustomerAddress.Controls.Add(this.label1);
-            this.grpCustomerAddress.Controls.Add(this.txtWhereCustAddr);
-            this.grpCustomerAddress.Controls.Add(this.label2);
-            this.grpCustomerAddress.Controls.Add(this.txtSelectCustAddr);
-            this.grpCustomerAddress.Controls.Add(this.checkBox1);
-            this.grpCustomerAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.grpCustomerAddress.Location = new System.Drawing.Point(3, 581);
-            this.grpCustomerAddress.Name = "grpCustomerAddress";
-            this.grpCustomerAddress.Size = new System.Drawing.Size(1117, 209);
-            this.grpCustomerAddress.TabIndex = 20;
-            this.grpCustomerAddress.TabStop = false;
-            this.grpCustomerAddress.Text = "Customer Addresses";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 130);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Where";
-            // 
-            // txtWhereCustAddr
-            // 
-            this.txtWhereCustAddr.Location = new System.Drawing.Point(83, 126);
-            this.txtWhereCustAddr.Multiline = true;
-            this.txtWhereCustAddr.Name = "txtWhereCustAddr";
-            this.txtWhereCustAddr.Size = new System.Drawing.Size(1028, 70);
-            this.txtWhereCustAddr.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Select/From";
-            // 
-            // txtSelectCustAddr
-            // 
-            this.txtSelectCustAddr.Location = new System.Drawing.Point(83, 45);
-            this.txtSelectCustAddr.Multiline = true;
-            this.txtSelectCustAddr.Name = "txtSelectCustAddr";
-            this.txtSelectCustAddr.Size = new System.Drawing.Size(1028, 70);
-            this.txtSelectCustAddr.TabIndex = 1;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(177, 19);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Process Customer Addresses";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -330,14 +294,147 @@ partial class Form1
             this.chkProcessCustomers.Text = "Process Customers";
             this.chkProcessCustomers.UseVisualStyleBackColor = true;
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.grpCustomerAddress);
+            this.tabPage7.Location = new System.Drawing.Point(4, 24);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1131, 656);
+            this.tabPage7.TabIndex = 10;
+            this.tabPage7.Text = "AR - Address";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // grpCustomerAddress
+            // 
+            this.grpCustomerAddress.Controls.Add(this.label1);
+            this.grpCustomerAddress.Controls.Add(this.txtWhereCustAddr);
+            this.grpCustomerAddress.Controls.Add(this.label2);
+            this.grpCustomerAddress.Controls.Add(this.txtSelectCustAddr);
+            this.grpCustomerAddress.Controls.Add(this.checkBox1);
+            this.grpCustomerAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.grpCustomerAddress.Location = new System.Drawing.Point(7, 11);
+            this.grpCustomerAddress.Name = "grpCustomerAddress";
+            this.grpCustomerAddress.Size = new System.Drawing.Size(1117, 209);
+            this.grpCustomerAddress.TabIndex = 21;
+            this.grpCustomerAddress.TabStop = false;
+            this.grpCustomerAddress.Text = "Customer Addresses";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 130);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Where";
+            // 
+            // txtWhereCustAddr
+            // 
+            this.txtWhereCustAddr.Location = new System.Drawing.Point(83, 126);
+            this.txtWhereCustAddr.Multiline = true;
+            this.txtWhereCustAddr.Name = "txtWhereCustAddr";
+            this.txtWhereCustAddr.Size = new System.Drawing.Size(1028, 70);
+            this.txtWhereCustAddr.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Select/From";
+            // 
+            // txtSelectCustAddr
+            // 
+            this.txtSelectCustAddr.Location = new System.Drawing.Point(83, 45);
+            this.txtSelectCustAddr.Multiline = true;
+            this.txtSelectCustAddr.Name = "txtSelectCustAddr";
+            this.txtSelectCustAddr.Size = new System.Drawing.Size(1028, 70);
+            this.txtSelectCustAddr.TabIndex = 1;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 20);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(177, 19);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Process Customer Addresses";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // tabAP
             // 
+            this.tabAP.Controls.Add(this.groupBox2);
             this.tabAP.Location = new System.Drawing.Point(4, 24);
             this.tabAP.Name = "tabAP";
             this.tabAP.Size = new System.Drawing.Size(1131, 656);
             this.tabAP.TabIndex = 2;
             this.tabAP.Text = "AP";
             this.tabAP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(11, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1117, 209);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Vendors";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 15);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Where";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(83, 126);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1028, 70);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "WHERE  a.CompanyID = \'JMS\' \r\nAND  IsNull(a.CustKey,0) <> 0 \r\nAND  a.Status = 1\r\n";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Select/From";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.Location = new System.Drawing.Point(83, 45);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(1028, 70);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.Text = resources.GetString("textBox2.Text");
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 20);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(111, 19);
+            this.checkBox2.TabIndex = 0;
+            this.checkBox2.Text = "Process Vendors";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // tabGL
             // 
@@ -425,11 +522,16 @@ partial class Form1
             this.tabSettings.ResumeLayout(false);
             this.tabSettings.PerformLayout();
             this.tabAR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdExceptions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.grpCustomerAddress.ResumeLayout(false);
-            this.grpCustomerAddress.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.grpCustomerAddress.ResumeLayout(false);
+            this.grpCustomerAddress.PerformLayout();
+            this.tabAP.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -455,12 +557,6 @@ partial class Form1
     private TextBox txtFromCustomer;
     private CheckBox chkProcessCustomers;
     private Button btnRun;
-    private GroupBox grpCustomerAddress;
-    private Label label1;
-    private TextBox txtWhereCustAddr;
-    private Label label2;
-    private TextBox txtSelectCustAddr;
-    private CheckBox checkBox1;
     private TabPage tabAP;
     private TabPage tabGL;
     private TabPage tabPage1;
@@ -471,4 +567,18 @@ partial class Form1
     private TabPage tabPage6;
     private DataGridView dataGridView1;
     private BindingSource bindingSource1;
+    private TabPage tabPage7;
+    private GroupBox grpCustomerAddress;
+    private Label label1;
+    private TextBox txtWhereCustAddr;
+    private Label label2;
+    private TextBox txtSelectCustAddr;
+    private CheckBox checkBox1;
+    private DataGridView grdExceptions;
+    private GroupBox groupBox2;
+    private Label label3;
+    private TextBox textBox1;
+    private Label label4;
+    private TextBox textBox2;
+    private CheckBox checkBox2;
 }
