@@ -15,6 +15,7 @@ namespace AcuConvert.Core.Models.Data.DB
     {
         public int    MappingID   { get; set; }
         public string InstanceID  { get; set; }
+        public bool      IsKey           { get; set; }
         public string SourceField { get; set; }
         public string DestField   { get; set; }
         public string SourceValue { get; set; }
