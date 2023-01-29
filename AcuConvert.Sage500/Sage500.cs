@@ -37,29 +37,23 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
             sqlCnn.Open();
             sqlCmd = new SqlCommand(sql, sqlCnn);
             SqlDataReader sqlReader = sqlCmd.ExecuteReader();
-            DataTable schemaTable = sqlReader.GetSchemaTable();
-
-            foreach (DataRow row in schemaTable.Rows)
-            {
-                // add entry to ReturnFields list for each
-
-                // need to map db data types to TypeCode
-                //returnfields.Add(new Field(row["ColumnName"].ToString(), row["DataType"].ToString(), false));
-            }
+            int rowcnt = 0;
 
             if (sqlReader.HasRows)
             {
                 while(sqlReader.Read())
                 {
-                    Row r = new Row();
+                    rowcnt++;
+
+                    Row r = new Row(String.Empty,rowcnt);
 
                     //read rows
                     for (int i = 0; i < sqlReader.FieldCount; i++)
                     {
-                        Field f = new Field(sqlReader.GetName(i), sqlReader.GetDataTypeName(i), false);
+                        Field f = new Field(sqlReader.GetName(i), sqlReader.GetValue(i).GetType().ToString(), false);
                         f.Value = sqlReader.GetValue(i);
 
-                        r.Fields.Add(f);
+                        r.AddField(f);
                     }
                     
                     returnrows.Add(r);
