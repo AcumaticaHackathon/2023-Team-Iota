@@ -51,8 +51,14 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
             {
                 while(sqlReader.Read())
                 {
-                    //read rows
+                    Row r = new Row();
 
+                    //read rows
+                    for (int i = 0; i < sqlReader.FieldCount; i++)
+                    {
+                        r.Fields.Add(new Field(sqlReader.GetName(i), sqlReader.GetDataTypeName(i), sqlReader.GetValue(i));
+                    }
+                        
                 }
             }
 
