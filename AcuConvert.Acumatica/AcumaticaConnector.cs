@@ -37,6 +37,11 @@ namespace AcuConvert.Core
             var jsonDom = JsonConvert.DeserializeObject<JObject>(json)!;
             var toBeTestted = jsonDom.SelectToken(string.Format("$.definitions.{0}.allOf[1].properties", acuObject))!.ToArray();
 
+            foreach (var p in toBeTestted) 
+            {
+               // var r =p.;
+            }
+
             // with hardcoded
             dynamic dynamicObject = JsonConvert.DeserializeObject<ExpandoObject>(json)!;
             IDictionary<string, object> properties = dynamicObject.definitions.Customer.allOf[1].properties;

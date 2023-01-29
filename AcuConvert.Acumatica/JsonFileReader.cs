@@ -13,7 +13,7 @@ namespace AcuConvert.Core
         public string GetSwaggerJsonString()
         {
             string json = "";
-            using (StreamReader r = new StreamReader(@"..\..\..\..\AcuConvert.Core\SampleJson\sample-swagger.json"))
+            using (StreamReader r = new StreamReader(@"..\..\..\..\AcuConvert.Acumatica\SampleJson\sample-swagger.json"))
             {
                 json = r.ReadToEnd();
             }
