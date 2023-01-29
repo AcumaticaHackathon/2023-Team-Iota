@@ -189,6 +189,8 @@ public partial class Form1 : Form
             Console.WriteLine(exception);
             throw;
         }
+
+        grdExceptions.DataSource = SyncRows;
         grdExceptions.Refresh();
     }
 }
