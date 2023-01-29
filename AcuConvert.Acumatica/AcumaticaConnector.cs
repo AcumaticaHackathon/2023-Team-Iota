@@ -1,4 +1,5 @@
 ﻿using System.Dynamic;
+using System.Net;
 using System.Text.RegularExpressions;
 using AcuConvert.Acumatica.Helpers;
 using AcuConvert.Acumatica.Interfaces;
@@ -15,11 +16,12 @@ namespace AcuConvert.Acumatica
     {
         private RestClient                 _client;
         private AcumaticaConnectionContext _context;
+
         public void Initialize(AcumaticaConnectionContext context)
         {
             _context = context;
-            // + $"entity/{context.EndpointName}/{context.EndpointVersion}"
-            _client = new RestClient(context.BaseURL + "/");
+            _client = new RestClient(new RestClientOptions(context.BaseURL + "/")
+                {CookieContainer = new CookieContainer()});
             var request = new RestRequest("entity/auth/login", Method.Post);
             request.AddJsonBody(new
             {
@@ -50,20 +52,19 @@ namespace AcuConvert.Acumatica
                         acuRow.Add(match.Groups["name"].Value, workingWith);
                     }
                 }
-                
+
                 switch (field.Value.DataType)
                 {
                     case "String":
                         workingWith.AddStringValue(field.Value.FieldName, field.Value.Value);
                         break;
                 }
-                
             }
-            
+
             var putRequest = row.NoteId.HasValue
                 ? new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource + "/" +row.NoteId, Method.Put) // Update
                 : new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource, Method.Put); // Insert
-            putRequest.AddJsonBody(acuRow);
+            putRequest.AddJsonBody(acuRow.ToString());
             var response = _client.Execute(putRequest);
             if (!response.IsSuccessful)
             {
@@ -80,18 +81,19 @@ namespace AcuConvert.Acumatica
 
             // to be tested for dynamic select
             var jsonDom = JsonConvert.DeserializeObject<JObject>(json)!;
-            var toBeTestted = jsonDom.SelectToken(string.Format("$.definitions.{0}.allOf[1].properties", acuObject))!.ToArray();
+            var toBeTestted = jsonDom.SelectToken(string.Format("$.definitions.{0}.allOf[1].properties", acuObject))!
+                                     .ToArray();
 
             // with hardcoded
-            dynamic dynamicObject = JsonConvert.DeserializeObject<ExpandoObject>(json)!;
-            IDictionary<string, object> properties = dynamicObject.definitions.Customer.allOf[1].properties;
+            dynamic                     dynamicObject = JsonConvert.DeserializeObject<ExpandoObject>(json)!;
+            IDictionary<string, object> properties    = dynamicObject.definitions.Customer.allOf[1].properties;
 
             var fields = new List<Field>();
 
             foreach (var prop in properties)
             {
-                IDictionary<string, object> valeObject = (IDictionary<string, object>)prop.Value;
-                var typeValueString = valeObject.First().Value as string;
+                IDictionary<string, object> valeObject      = (IDictionary<string, object>) prop.Value;
+                var                         typeValueString = valeObject.First().Value as string;
                 fields.Add(new Field(prop.Key, TypeUtil.GetTypeCode(typeValueString), false));
             }
 
@@ -100,7 +102,7 @@ namespace AcuConvert.Acumatica
 
         public void Dispose()
         {
-            var request  = new RestRequest("entity/auth/logout", Method.Post);
+            var request = new RestRequest("entity/auth/logout", Method.Post);
             _client.Execute(request);
             _client.Dispose();
         }
