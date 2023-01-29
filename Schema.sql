@@ -81,15 +81,15 @@ Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer',
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CreateDate','')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','UpdateDate','')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustClassID','CustomerClass')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine1','Address.addressLine1')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine2','Address.addressLine2')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address.countryID')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','City','Address.City')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','StateID','Address.State')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address.CountryID')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Name','Contact.FirstName')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Phone','Contact.Phone1')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','EmailAddr','Contact.EMail')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine1','Address/AddressLine1')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine2','Address/AddressLine2')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address/CountryID')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','City','Address/City')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','StateID','Address/State')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address/CountryID')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Name','Contact/FirstName')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Phone','Contact/Phone1')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','EmailAddr','Contact/EMail')
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncRow')
@@ -106,6 +106,23 @@ BEGIN
    )
 END   
 GO
+
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 0, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 1, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 2, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 3, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 4, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 5, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 6, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 7, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 8, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 9, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 10, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 11, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer',12, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 13, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 14, NEWID())
+INSERT INTO SyncRow (InstanceID, RowNbr, NoteID) VALUES('Customer', 15, NEWID())
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncField')

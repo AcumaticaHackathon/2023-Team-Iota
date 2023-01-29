@@ -23,8 +23,10 @@ namespace AcuConvert.Persistence
         public Repository()
         {
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource         = "local";
+            builder.DataSource         = "localhost";
             builder.IntegratedSecurity = true;
+            builder.InitialCatalog     = "Hackathon";
+            
             builder.UserID             = @"TELAVI\KyleVanderstoep";
             
             _conn    = new SqlConnection(builder.ToString());
@@ -39,9 +41,14 @@ namespace AcuConvert.Persistence
             }
         }
 
-        public IEnumerable<Row>                          GetSyncDataSet(string  instanceID)
+        public IEnumerable<SyncRow>                          GetSyncDataSet(string  instanceID)
         {
-            throw new NotImplementedException();
+            return _conn.Query<SyncRow>($"SELECT * FROM SyncRow Where InstanceID = '{instanceID}'");
+        }
+
+        public IEnumerable<SyncMapping> GetSyncMapping(string instanceID)
+        {
+            return _conn.Query<SyncMapping>($"SELECT * FROM SyncMapping Where InstanceID = '{instanceID}'");
         }
 
         public IEnumerable<KeyValuePair<string, string>> GetSourceConnectionSettings()
