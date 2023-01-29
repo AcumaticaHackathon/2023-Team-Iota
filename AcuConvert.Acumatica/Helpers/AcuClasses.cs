@@ -15,8 +15,8 @@ namespace AcuConvert.Acumatica.Helpers
     {
         public static void AddStringValue(this JObject jObject, string propertyName, string value)
         {
-            var stringValue = new JObject();
-            stringValue.Add(new JProperty("Value", value));
+            var stringValue = new JProperty(propertyName, new  JObject(new JProperty("Value", value)));
+    
             jObject.Add(stringValue);
         }
         public static void AddBoolValue(this JObject jObject, string propertyName, string value)
