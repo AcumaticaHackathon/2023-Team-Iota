@@ -1,4 +1,4 @@
 # 2023-Team-Iota
-This is the repository for Team Iota's Hackathon project that was held on January 28th & 29th at the 2023 Summit at the Wynn Hotel in Las Vegas, Nevada.
+## EXODUS
 
-### Very Important: Please add a detailed description of your project here in the README - Thanks! 
+A Data import tool to help partners convert their new clients' legacy systems to Acumatica ERP. Allowing for progressive syncronization over a series of weeks instead of a rushed go live weekend. Connects to a SQL backend and the Acumatica API. Syncronizes in batches based on date ranges since last run.
