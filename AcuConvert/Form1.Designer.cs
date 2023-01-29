@@ -29,12 +29,12 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.lblConnectorConnectString = new System.Windows.Forms.Label();
             this.cboConnectorConnectString = new System.Windows.Forms.ComboBox();
-            this.lblDestinationInstance = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.lblSourceERP = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.lblDestinationURL = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@ partial class Form1
             this.lblSourceSQLConnection = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabAR = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grpCustomerAddress = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtWhereCustAddr = new System.Windows.Forms.TextBox();
@@ -63,11 +64,14 @@ partial class Form1
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.btnRun = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabAR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpCustomerAddress.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -93,8 +97,6 @@ partial class Form1
             // 
             this.tabSettings.Controls.Add(this.lblConnectorConnectString);
             this.tabSettings.Controls.Add(this.cboConnectorConnectString);
-            this.tabSettings.Controls.Add(this.lblDestinationInstance);
-            this.tabSettings.Controls.Add(this.comboBox4);
             this.tabSettings.Controls.Add(this.lblSourceERP);
             this.tabSettings.Controls.Add(this.comboBox3);
             this.tabSettings.Controls.Add(this.lblDestinationURL);
@@ -126,23 +128,7 @@ partial class Form1
             this.cboConnectorConnectString.Name = "cboConnectorConnectString";
             this.cboConnectorConnectString.Size = new System.Drawing.Size(546, 23);
             this.cboConnectorConnectString.TabIndex = 16;
-            // 
-            // lblDestinationInstance
-            // 
-            this.lblDestinationInstance.AutoSize = true;
-            this.lblDestinationInstance.Location = new System.Drawing.Point(14, 139);
-            this.lblDestinationInstance.Name = "lblDestinationInstance";
-            this.lblDestinationInstance.Size = new System.Drawing.Size(114, 15);
-            this.lblDestinationInstance.TabIndex = 15;
-            this.lblDestinationInstance.Text = "Destination Instance";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(177, 136);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(132, 23);
-            this.comboBox4.TabIndex = 14;
+            this.cboConnectorConnectString.Text = "Data Source=(local);Initial Catalog=AcuConvert;User ID=sa;password=";
             // 
             // lblSourceERP
             // 
@@ -160,6 +146,7 @@ partial class Form1
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(167, 23);
             this.comboBox3.TabIndex = 12;
+            this.comboBox3.Text = "Sage MAS500";
             // 
             // lblDestinationURL
             // 
@@ -177,6 +164,7 @@ partial class Form1
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(546, 23);
             this.comboBox2.TabIndex = 10;
+            this.comboBox2.Text = "https://hackathon.acumatica.com/Iota";
             // 
             // lblSourceSQLConnection
             // 
@@ -194,9 +182,11 @@ partial class Form1
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(546, 23);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.Text = "Data Source=(local);Initial Catalog=Hackathon;User ID=sa;password=";
             // 
             // tabAR
             // 
+            this.tabAR.Controls.Add(this.dataGridView1);
             this.tabAR.Controls.Add(this.grpCustomerAddress);
             this.tabAR.Controls.Add(this.groupBox1);
             this.tabAR.Location = new System.Drawing.Point(4, 24);
@@ -204,9 +194,19 @@ partial class Form1
             this.tabAR.Padding = new System.Windows.Forms.Padding(3);
             this.tabAR.Size = new System.Drawing.Size(1131, 656);
             this.tabAR.TabIndex = 1;
-            this.tabAR.Text = "AR";
+            this.tabAR.Text = "AR - Customer";
             this.tabAR.UseVisualStyleBackColor = true;
             this.tabAR.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(91, 221);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(676, 273);
+            this.dataGridView1.TabIndex = 21;
             // 
             // grpCustomerAddress
             // 
@@ -216,7 +216,7 @@ partial class Form1
             this.grpCustomerAddress.Controls.Add(this.txtSelectCustAddr);
             this.grpCustomerAddress.Controls.Add(this.checkBox1);
             this.grpCustomerAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.grpCustomerAddress.Location = new System.Drawing.Point(7, 224);
+            this.grpCustomerAddress.Location = new System.Drawing.Point(3, 581);
             this.grpCustomerAddress.Name = "grpCustomerAddress";
             this.grpCustomerAddress.Size = new System.Drawing.Size(1117, 209);
             this.grpCustomerAddress.TabIndex = 20;
@@ -293,11 +293,13 @@ partial class Form1
             // 
             // txtWhereCustomer
             // 
+            this.txtWhereCustomer.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtWhereCustomer.Location = new System.Drawing.Point(83, 126);
             this.txtWhereCustomer.Multiline = true;
             this.txtWhereCustomer.Name = "txtWhereCustomer";
             this.txtWhereCustomer.Size = new System.Drawing.Size(1028, 70);
             this.txtWhereCustomer.TabIndex = 3;
+            this.txtWhereCustomer.Text = "WHERE  a.CompanyID = \'JMS\' \r\nAND  IsNull(a.CustKey,0) <> 0 \r\nAND  a.Status = 1\r\n";
             // 
             // lblSelect
             // 
@@ -310,11 +312,13 @@ partial class Form1
             // 
             // txtFromCustomer
             // 
+            this.txtFromCustomer.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtFromCustomer.Location = new System.Drawing.Point(83, 45);
             this.txtFromCustomer.Multiline = true;
             this.txtFromCustomer.Name = "txtFromCustomer";
             this.txtFromCustomer.Size = new System.Drawing.Size(1028, 70);
             this.txtFromCustomer.TabIndex = 1;
+            this.txtFromCustomer.Text = resources.GetString("txtFromCustomer.Text");
             // 
             // chkProcessCustomers
             // 
@@ -416,14 +420,17 @@ partial class Form1
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "AccuConvert";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.tabSettings.PerformLayout();
             this.tabAR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grpCustomerAddress.ResumeLayout(false);
             this.grpCustomerAddress.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -433,8 +440,6 @@ partial class Form1
     private TabControl tabControl1;
     private TabPage tabSettings;
     private TabPage tabAR;
-    private Label lblDestinationInstance;
-    private ComboBox comboBox4;
     private Label lblSourceERP;
     private ComboBox comboBox3;
     private Label lblDestinationURL;
@@ -464,4 +469,6 @@ partial class Form1
     private TabPage tabPage4;
     private TabPage tabPage5;
     private TabPage tabPage6;
+    private DataGridView dataGridView1;
+    private BindingSource bindingSource1;
 }

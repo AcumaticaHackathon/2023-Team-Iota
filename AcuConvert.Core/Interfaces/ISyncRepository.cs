@@ -9,6 +9,7 @@
 
 using AcuConvert.Core.Models;
 using AcuConvert.Core.Models.Data;
+using AcuConvert.Core.Models.Data.DB;
 
 namespace AcuConvert.Core.Interfaces
 {
@@ -19,6 +20,6 @@ namespace AcuConvert.Core.Interfaces
         IEnumerable<KeyValuePair<string, string>> GetSourceConnectionSettings();
         AcumaticaConnectionContext                GetDestConnectionSettings();
         IEnumerable<KeyValuePair<string, string>> GetInstanceQuerySettings(string instanceID);
-        SyncInstance                              GetSyncInstance(string          instanceID);
+        SyncInstance?                             GetSyncInstance(string          instanceID);
     }
 }

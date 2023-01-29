@@ -13,14 +13,15 @@ namespace AcuConvert.Core.Models
 {
     public class AcumaticaConnectionContext
     {
-        public AcumaticaConnectionContext(string endpointName, 
-                                          string endpointVersion, 
-                                          string resource,
-                                          string objectName,
-                                          string baseUrl, 
+        public AcumaticaConnectionContext(string baseUrl, 
                                           string username,
                                           string password,     
-                                          string company)
+                                          string company,
+                                          string endpointName, 
+                                          string endpointVersion, 
+                                          string resource,
+                                          string objectName
+                                          )
         {
             if (string.IsNullOrWhiteSpace(endpointName)) throw new ArgumentNullException(nameof(endpointName));
             if (string.IsNullOrWhiteSpace(endpointVersion)) throw new ArgumentNullException(nameof(endpointVersion));

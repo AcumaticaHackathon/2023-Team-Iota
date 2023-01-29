@@ -57,4 +57,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtFromCustomer.Text" xml:space="preserve">
+    <value>SELECT a.CustKey,a.CustID,a.CustName,a.Status,a.CreateDate,a.UpdateDate,c.CustClassID,f.GLAcctNo,
+       d.AddrLine1,d.AddrLine2,d.CountryID,d.City,d.StateID,d.CountryID,e.Name,e.Phone,e.EmailAddr
+FROM  tarCustomera 
+   JOIN tarCustClass c ON a.CustClassKey = c.CustClassKey 
+   LEFT OUTER JOIN tciAddress d ON a.DfltBillToAddrKey = d.AddrKey
+   LEFT OUTER JOIN tciContact e ON a.PrimaryCntctkey = e.CntctKey
+   LEFT OUTER JOIN tglAccount f ON a.DfltSalesAcctkey = f.GLAcctKey
+WHERE  a.CompanyID = 'JMS' 
+   AND  IsNull(a.CustKey,0) &lt;&gt; 0 
+   AND  a.Status = 1
+ORDER BY a.CustID</value>
+  </data>
+  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

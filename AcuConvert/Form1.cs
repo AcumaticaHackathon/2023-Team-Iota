@@ -1,9 +1,12 @@
 using AcuConvert.Core.Interfaces;
+using System.Data.SqlClient;
+using AcuConvert.Core.Models.Data.DB;
 
 namespace AcuConvert;
 
 public partial class Form1 : Form
 {
+    public List<SyncMapping> SyncMappings { get; set; }
     private readonly ISyncRepository     _syncRepository;
     private readonly ISyncWorker         _syncWorker;
     private readonly IAcumaticaConnector _acumaticaConnector;
@@ -19,11 +22,17 @@ public partial class Form1 : Form
         _acumaticaConnector   = acumaticaConnector;
         _legacyConnector = legacyConnector;
         InitializeComponent();
-        sConnectorConnectString
+        
     }
 
     public string sConnectorConnectString = "Data Source=(local);Initial Catalog=AcuConvert;User ID=sa;password=";
     string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+        dataGridView1.DataSource = SyncMappings;
+
+    }
 
     private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -79,4 +88,6 @@ public partial class Form1 : Form
     {
 
     }
+
+
 }

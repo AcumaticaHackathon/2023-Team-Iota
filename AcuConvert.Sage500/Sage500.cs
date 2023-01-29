@@ -22,6 +22,11 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
         string sql = type
                            .AuthenticationValues.FirstOrDefault(v =>
                                 string.Equals(v.Key, "Query", StringComparison.OrdinalIgnoreCase)).Value;
+        
+        string lastmodifiedfield = type.QueryParameters.FirstOrDefault(v => string.Equals(v.Key, "LastModifiedField",StringComparison.OrdinalIgnoreCase)).Value;
+
+        sql += " and " + lastmodifiedfield + " > '" + lastRunDate + "'";
+
         sqlCnn = MakeSqlConnection(type);
         try
         {

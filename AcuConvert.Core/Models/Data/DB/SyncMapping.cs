@@ -9,7 +9,7 @@
 
 #endregion
 
-namespace AcuConvert.Core.Models.Data
+namespace AcuConvert.Core.Models.Data.DB
 {
     public class SyncMapping
     {
