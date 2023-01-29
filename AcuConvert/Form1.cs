@@ -13,6 +13,7 @@ public partial class Form1 : Form
     public           BindingList<SyncMapping> SyncMappings { get; set; }
     public           BindingList<SyncRow>     SyncRows     { get; set; }
     public           BindingList<SyncField>   SyncFields   { get; set; }
+    public           BindingList<string>      AcuFields    { get; set; }
     public           SyncInstance             Instance     { get; set; }
     private readonly ISyncRepository          _syncRepository;
     private readonly ISyncWorker              _syncWorker;
@@ -33,21 +34,22 @@ public partial class Form1 : Form
         _reconciliator      = reconciliator;
         InitializeComponent();
         SyncFields = new BindingList<SyncField>();
+        AcuFields = new BindingList<string>();
     }
 
     private void Form1_Load(object sender, EventArgs e)
     {
         SyncMappings             = new BindingList<SyncMapping>(_syncRepository.GetSyncMapping("Customer").ToList());
-        dataGridView1.DataSource = SyncMappings;
+        grdMapping.DataSource = SyncMappings;
 
         SyncRows                 = new BindingList<SyncRow>(_syncRepository.GetSyncDataSet("Customer").ToList());
         grdExceptions.DataSource = SyncRows;
-
+        cmbCustEndpointfields.DataSource = AcuFields;
         this.Instance = _syncRepository.GetSyncInstance("customer");
-        _acumaticaConnector.Initialize(new AcumaticaConnectionContext("https://hackathon.acumatica.com/iota", "admin", "123", "", "Default", "20.200.001", "Customer", "Customer"));
+        _acumaticaConnector.Initialize(new AcumaticaConnectionContext("https://hackathon.acumatica.com/iota", "admin", "123", "", "Demo", "1.0", "Customer", "Customer"));
     }
 
-    private void button3_Click(object sender, EventArgs e)
+    private void refreshLegacySchema_Click(object sender, EventArgs e)
     {
         // Sync schema
         var items = _legacyConnector.GetSchema(new LegacyConnectionContext()
@@ -192,5 +194,21 @@ public partial class Form1 : Form
 
         grdExceptions.DataSource = SyncRows;
         grdExceptions.Refresh();
+    }
+
+    private void refreshAcuSchema_Click(object sender, EventArgs e)
+    {
+        var fields = _acumaticaConnector.GetSchema("Customer");
+        AcuFields.Clear();
+        foreach (Field field in fields)
+        {
+            AcuFields.Add(field.FieldName);
+        }
+    }
+
+    private void addAcuField_Click(object sender, EventArgs e)
+    {
+        var curRow = grdMapping.CurrentRow;
+        curRow.Cells["Destfield"].Value = cmbCustEndpointfields.SelectedItem;
     }
 }
