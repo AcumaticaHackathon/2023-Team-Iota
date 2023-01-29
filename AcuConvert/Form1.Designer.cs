@@ -54,7 +54,6 @@ partial class Form1
             this.lblSelect = new System.Windows.Forms.Label();
             this.txtFromCustomer = new System.Windows.Forms.TextBox();
             this.chkProcessCustomers = new System.Windows.Forms.CheckBox();
-            this.btnRun = new System.Windows.Forms.Button();
             this.tabAP = new System.Windows.Forms.TabPage();
             this.tabGL = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -63,6 +62,7 @@ partial class Form1
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnRun = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabAR.SuspendLayout();
@@ -215,6 +215,7 @@ partial class Form1
             this.grpCustomerAddress.Controls.Add(this.label2);
             this.grpCustomerAddress.Controls.Add(this.txtSelectCustAddr);
             this.grpCustomerAddress.Controls.Add(this.checkBox1);
+            this.grpCustomerAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.grpCustomerAddress.Location = new System.Drawing.Point(7, 224);
             this.grpCustomerAddress.Name = "grpCustomerAddress";
             this.grpCustomerAddress.Size = new System.Drawing.Size(1117, 209);
@@ -273,6 +274,7 @@ partial class Form1
             this.groupBox1.Controls.Add(this.lblSelect);
             this.groupBox1.Controls.Add(this.txtFromCustomer);
             this.groupBox1.Controls.Add(this.chkProcessCustomers);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1117, 209);
@@ -323,15 +325,6 @@ partial class Form1
             this.chkProcessCustomers.TabIndex = 0;
             this.chkProcessCustomers.Text = "Process Customers";
             this.chkProcessCustomers.UseVisualStyleBackColor = true;
-            // 
-            // btnRun
-            // 
-            this.btnRun.Location = new System.Drawing.Point(1015, 691);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(121, 25);
-            this.btnRun.TabIndex = 1;
-            this.btnRun.Text = "Run ...";
-            this.btnRun.UseVisualStyleBackColor = true;
             // 
             // tabAP
             // 
@@ -404,6 +397,15 @@ partial class Form1
             this.tabPage6.TabIndex = 9;
             this.tabPage6.Text = "CRM";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // btnRun
+            // 
+            this.btnRun.Location = new System.Drawing.Point(1015, 691);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(121, 25);
+            this.btnRun.TabIndex = 1;
+            this.btnRun.Text = "Run ...";
+            this.btnRun.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
