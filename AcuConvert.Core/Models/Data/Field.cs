@@ -24,6 +24,6 @@ namespace AcuConvert.Core.Models.Data
         public string   FieldName { get; }
         public string DataType  { get; }
         public bool     IsKey     { get; }
-        public object   Value     { get; set; }
+        public string   Value     { get; set; }
     }
 }

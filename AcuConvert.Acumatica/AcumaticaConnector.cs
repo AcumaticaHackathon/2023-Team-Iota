@@ -1,4 +1,5 @@
 ﻿using System.Dynamic;
+using System.Text.RegularExpressions;
 using AcuConvert.Acumatica.Helpers;
 using AcuConvert.Acumatica.Interfaces;
 using AcuConvert.Core.Interfaces;
@@ -6,20 +7,67 @@ using AcuConvert.Core.Models;
 using AcuConvert.Core.Models.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using RestSharp;
 
 namespace AcuConvert.Acumatica
 {
-    public class AcumaticaConnector : IAcumaticaConnector
+    public class AcumaticaConnector : IAcumaticaConnector, IDisposable
     {
-
+        private RestClient                 _client;
+        private AcumaticaConnectionContext _context;
         public void Initialize(AcumaticaConnectionContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _client = new RestClient(context.BaseURL + "/" + $"entity/{context.EndpointName}/{context.EndpointVersion}");
+            var request = new RestRequest("entity/auth/login", Method.Post);
+            request.AddJsonBody(new
+            {
+                name     = context.Username,
+                password = context.Password,
+                company  = context.Company
+            });
+            var response = _client.Execute(request);
+            if (!response.IsSuccessful) throw new InvalidOperationException("Could not connect to Acumatica");
         }
 
         public void SendRow(Row row)
         {
-            throw new NotImplementedException();
+            JObject acuRow = new JObject();
+
+            foreach (var field in row.Fields)
+            {
+                // Try to see if we have a sub class
+                JObject workingWith = acuRow;
+                var     match       = Regex.Match(field.Value.FieldName, @"(?<name>\w+)\/");
+                if (match.Success)
+                {
+                    // We need to make a sub object
+                    if (!acuRow.TryGetValue(match.Groups["name"].Value,
+                            StringComparison.OrdinalIgnoreCase, out JToken? existingObj))
+                    {
+                        workingWith = new JObject();
+                        acuRow.Add(match.Groups["name"].Value, workingWith);
+                    }
+                }
+                
+                switch (field.Value.DataType)
+                {
+                    case "String":
+                        workingWith.AddStringValue(field.Value.FieldName, field.Value.Value);
+                        break;
+                }
+                
+            }
+            
+            var putRequest = row.NoteId.HasValue
+                ? new RestRequest(_context.Resource + "/" +row.NoteId, Method.Put) // Update
+                : new RestRequest(_context.Resource, Method.Put); // Insert
+            putRequest.AddJsonBody(acuRow);
+            var response = _client.Execute(putRequest);
+            if (!response.IsSuccessful)
+            {
+                throw new HttpRequestException();
+            }
         }
 
         IEnumerable<Field> IAcumaticaConnector.GetSchema(string acuObject)
@@ -51,6 +99,13 @@ namespace AcuConvert.Acumatica
             }
 
             return fields;
+        }
+
+        public void Dispose()
+        {
+            var request  = new RestRequest("entity/auth/logout", Method.Post);
+            _client.Execute(request);
+            _client.Dispose();
         }
     }
 }
