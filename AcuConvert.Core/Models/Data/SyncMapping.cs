@@ -1,20 +1,22 @@
 ﻿#region #Copyright
+
 //  ----------------------------------------------------------------------------------
 //   COPYRIGHT (c) 2023 CONTOU CONSULTING
 //   ALL RIGHTS RESERVED
 //   AUTHOR: Kyle Vanderstoep
 //   CREATED DATE: 2023/01/28
 // ----------------------------------------------------------------------------------
+
 #endregion
 
-using AcuConvert.Core.Models;
-using AcuConvert.Core.Models.Data;
-
-namespace AcuConvert.Core.Interfaces
+namespace AcuConvert.Core.Models.Data
 {
-    public interface ILegacyConnector
+    public class SyncMapping
     {
-        IEnumerable<Field> GetSchema(LegacyConnectionContext type);
-        IEnumerable<Row>   GetDataSet(LegacyConnectionContext type, DateTime lastRunDate);
+        public int    MappingID   { get; set; }
+        public string InstanceID  { get; set; }
+        public string SourceField { get; set; }
+        public string DestField   { get; set; }
+        public string SourceValue { get; set; }
     }
 }
