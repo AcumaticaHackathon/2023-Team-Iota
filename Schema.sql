@@ -1,14 +1,15 @@
-DROP TABLE  [dbo].SourceConnectionSetting
+DROP TABLE  [dbo].ConnectionSetting
 GO
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
-              WHERE TABLE_NAME = 'SourceConnectionSetting')
+              WHERE TABLE_NAME = 'ConnectionSetting')
 BEGIN
 
-   CREATE TABLE [dbo].SourceConnectionSetting(
-      SettingID NVARCHAR(30) NOT NULL
-	, Value VARCHAR(1026) NOT NULL
+   CREATE TABLE [dbo].ConnectionSetting(
+      SettingID NVARCHAR(30) NOT NULL,
+	  IsDest bit NOT NULL DEFAULT(0),
+	  Value VARCHAR(1026) NOT NULL
 
-	CONSTRAINT [SourceConnectionSetting_PK] PRIMARY KEY ([SettingID] )
+	CONSTRAINT [ConnectionSetting_PK] PRIMARY KEY ([SettingID] )
    )
 END   
 GO
@@ -103,6 +104,7 @@ BEGIN
       InstanceID VARCHAR(15) NOT NULL
 	, RowNbr INT NOT NULL
 	, SourceFieldName NVARCHAR(256) NOT NULL
+	, IsKey bit NOT NULL DEFAULT 0
 	, DataType NVARCHAR(125) NOT NULL
 	, Value NVARCHAR(1026) NULL
 

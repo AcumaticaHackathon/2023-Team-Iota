@@ -1,4 +1,5 @@
 using AcuConvert.Core.Interfaces;
+using System.Data.SqlClient;
 
 namespace AcuConvert;
 
@@ -19,11 +20,28 @@ public partial class Form1 : Form
         _acumaticaConnector   = acumaticaConnector;
         _legacyConnector = legacyConnector;
         InitializeComponent();
-        sConnectorConnectString
     }
 
     public string sConnectorConnectString = "Data Source=(local);Initial Catalog=AcuConvert;User ID=sa;password=";
     string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+        string sSQL = "";
+        SqlConnection connhdr = new SqlConnection();
+        connhdr.ConnectionString = sConnectorConnectString;
+        connhdr.Open();
+        SqlCommand cmdItems = new SqlCommand();
+        cmdItems.Connection = connhdr;
+        sSQL = "SELECT Value from SourceConnectionSetting where SettingID = 'LocalDatasource' ";
+        cmdItems.CommandText = sSQL;
+        SqlDataReader drconn = cmdItems.ExecuteReader();
+        while (drconn.Read())
+        {
+            string sBoxoutItem = drconn.GetString(0);
+        }
+
+    }
 
     private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -79,4 +97,6 @@ public partial class Form1 : Form
     {
 
     }
+
+
 }
