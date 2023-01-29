@@ -1,18 +1,13 @@
-﻿using AcuConvert.Core.Helpers;
+﻿using System.Dynamic;
+using AcuConvert.Acumatica.Helpers;
+using AcuConvert.Acumatica.Interfaces;
 using AcuConvert.Core.Interfaces;
 using AcuConvert.Core.Models;
 using AcuConvert.Core.Models.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
-namespace AcuConvert.Core
+namespace AcuConvert.Acumatica
 {
     public class AcumaticaConnector : IAcumaticaConnector
     {

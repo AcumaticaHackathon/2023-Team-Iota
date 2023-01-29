@@ -1,12 +1,6 @@
-﻿using AcuConvert.Core.Interfaces;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AcuConvert.Acumatica.Interfaces;
 
-namespace AcuConvert.Core
+namespace AcuConvert.Acumatica
 {
     internal class JsonFileReader : IJasonInput
     {
