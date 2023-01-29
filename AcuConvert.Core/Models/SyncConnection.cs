@@ -13,6 +13,5 @@ namespace AcuConvert.Core.Models
     {
         public AcumaticaConnectionContext AcumaticaConnectionContext { get; set; }
         public LegacyConnectionContext    LegacyConnectionContext    { get; set; }
-        
     }
 }

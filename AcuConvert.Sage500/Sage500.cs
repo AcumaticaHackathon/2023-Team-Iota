@@ -4,6 +4,8 @@ using AcuConvert.Core.Models;
 using AcuConvert.Core.Models.Data;
 using System.Data;
 using System.Data.SqlClient;
+using AcuConvert.Core.Models.Data;
+
 namespace AcuConvert.Sage500;
 
 public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.Core.Interfaces
