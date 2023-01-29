@@ -116,7 +116,6 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
             {
                 // add entry to ReturnFields list for each
 
-                // need to map db data types to TypeCode
                 returnfields.Add(new Field(row["ColumnName"].ToString(), row["DataType"].ToString(), false));
             }
             sqlReader.Close();
