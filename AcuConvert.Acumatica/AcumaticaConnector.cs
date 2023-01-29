@@ -18,7 +18,8 @@ namespace AcuConvert.Acumatica
         public void Initialize(AcumaticaConnectionContext context)
         {
             _context = context;
-            _client = new RestClient(context.BaseURL + "/" + $"entity/{context.EndpointName}/{context.EndpointVersion}");
+            // + $"entity/{context.EndpointName}/{context.EndpointVersion}"
+            _client = new RestClient(context.BaseURL + "/");
             var request = new RestRequest("entity/auth/login", Method.Post);
             request.AddJsonBody(new
             {
@@ -60,8 +61,8 @@ namespace AcuConvert.Acumatica
             }
             
             var putRequest = row.NoteId.HasValue
-                ? new RestRequest(_context.Resource + "/" +row.NoteId, Method.Put) // Update
-                : new RestRequest(_context.Resource, Method.Put); // Insert
+                ? new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}" + _context.Resource + "/" +row.NoteId, Method.Put) // Update
+                : new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}" + _context.Resource, Method.Put); // Insert
             putRequest.AddJsonBody(acuRow);
             var response = _client.Execute(putRequest);
             if (!response.IsSuccessful)
