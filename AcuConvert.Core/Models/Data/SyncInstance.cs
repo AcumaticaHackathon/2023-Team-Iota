@@ -16,7 +16,7 @@ namespace AcuConvert.Core.Models.Data
         public string   InstanceID         { get; set; }
         public string   Descr              { get; set; }
         public int      LastRowNbr         { get; set; }
-        public DateTime LastRun            { get; set; }
+        public DateTime? LastRun            { get; set; }
         public string   PluginName         { get; set; }
         public string   AcuEndpointName    { get; set; }
         public string   AcuEndpointVersion { get; set; }
