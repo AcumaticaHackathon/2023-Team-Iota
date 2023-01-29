@@ -746,7 +746,7 @@ partial class Form1
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(759, 33);
+            this.label7.Location = new System.Drawing.Point(759, 36);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 25);
             this.label7.TabIndex = 25;
@@ -754,7 +754,7 @@ partial class Form1
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(834, 30);
+            this.textBox4.Location = new System.Drawing.Point(833, 33);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(150, 31);
             this.textBox4.TabIndex = 26;
