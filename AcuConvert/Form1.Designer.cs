@@ -33,8 +33,6 @@ partial class Form1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSettings = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.lblSourceERP = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.lblDestinationURL = new System.Windows.Forms.Label();
@@ -91,6 +89,7 @@ partial class Form1
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabAR.SuspendLayout();
@@ -126,6 +125,7 @@ partial class Form1
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.button2);
             this.tabSettings.Controls.Add(this.label11);
             this.tabSettings.Controls.Add(this.textBox8);
             this.tabSettings.Controls.Add(this.label10);
@@ -134,8 +134,6 @@ partial class Form1
             this.tabSettings.Controls.Add(this.textBox6);
             this.tabSettings.Controls.Add(this.label8);
             this.tabSettings.Controls.Add(this.textBox5);
-            this.tabSettings.Controls.Add(this.label6);
-            this.tabSettings.Controls.Add(this.textBox3);
             this.tabSettings.Controls.Add(this.lblSourceERP);
             this.tabSettings.Controls.Add(this.comboBox3);
             this.tabSettings.Controls.Add(this.lblDestinationURL);
@@ -150,24 +148,6 @@ partial class Form1
             this.tabSettings.TabIndex = 0;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 182);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(225, 25);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Destination Acumatica URL";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(253, 177);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(257, 31);
-            this.textBox3.TabIndex = 14;
             // 
             // lblSourceERP
             // 
@@ -671,7 +651,7 @@ partial class Form1
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(253, 226);
+            this.textBox5.Location = new System.Drawing.Point(253, 182);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(257, 31);
             this.textBox5.TabIndex = 18;
@@ -680,7 +660,7 @@ partial class Form1
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 229);
+            this.label8.Location = new System.Drawing.Point(27, 185);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(136, 25);
@@ -691,7 +671,7 @@ partial class Form1
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 275);
+            this.label9.Location = new System.Drawing.Point(27, 231);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(147, 25);
@@ -700,7 +680,7 @@ partial class Form1
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(253, 272);
+            this.textBox6.Location = new System.Drawing.Point(253, 228);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(257, 31);
             this.textBox6.TabIndex = 20;
@@ -709,7 +689,7 @@ partial class Form1
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(27, 321);
+            this.label10.Location = new System.Drawing.Point(27, 277);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 25);
@@ -718,7 +698,7 @@ partial class Form1
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(253, 318);
+            this.textBox7.Location = new System.Drawing.Point(253, 274);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(257, 31);
             this.textBox7.TabIndex = 22;
@@ -727,7 +707,7 @@ partial class Form1
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(27, 367);
+            this.label11.Location = new System.Drawing.Point(27, 323);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(87, 25);
@@ -736,7 +716,7 @@ partial class Form1
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(253, 364);
+            this.textBox8.Location = new System.Drawing.Point(253, 320);
             this.textBox8.Name = "textBox8";
             this.textBox8.PasswordChar = '*';
             this.textBox8.Size = new System.Drawing.Size(257, 31);
@@ -759,6 +739,15 @@ partial class Form1
             this.textBox4.Size = new System.Drawing.Size(150, 31);
             this.textBox4.TabIndex = 26;
             this.textBox4.Text = "Customer";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(253, 407);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 34);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Save";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -839,8 +828,6 @@ partial class Form1
     private Button button4;
     private Label label5;
     private DateTimePicker dtCustomerLastRun;
-    private Label label6;
-    private TextBox textBox3;
     private Button addAcuField;
     private ComboBox cmbCustEndpointfields;
     private Label label8;
@@ -853,4 +840,5 @@ partial class Form1
     private TextBox textBox6;
     private TextBox textBox4;
     private Label label7;
+    private Button button2;
 }
