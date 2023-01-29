@@ -1,3 +1,8 @@
+using AcuConvert.Core.Interfaces;
+using AcuConvert.Core.Workers;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 namespace AcuConvert;
 
 static class Program
@@ -11,6 +16,26 @@ static class Program
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
+        var host = CreateHostBuilder().Build();
+        ServiceProvider = host.Services;
+
+        Application.Run(ServiceProvider.GetRequiredService<Form1>());
+    }
+    
+    public static IServiceProvider ServiceProvider { get; private set; }
+    static IHostBuilder CreateHostBuilder()
+    {
+        return Host.CreateDefaultBuilder()
+                   .ConfigureServices((context, services)=>
+                    {
+                        services.AddTransient<RecordReconciliator>();
+                        services.AddTransient<ISyncWorker,SyncWorker>();
+                        
+                        // services.AddTransient<ISyncRepository,>();
+                        // services.AddTransient<IAcumaticaConnector,>();
+                        // services.AddTransient<ILegacyConnector,>();
+                        
+                        services.AddTransient<Form1>();
+                    });
     }
 }
