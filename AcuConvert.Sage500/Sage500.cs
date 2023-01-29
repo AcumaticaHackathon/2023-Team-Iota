@@ -23,10 +23,10 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
         SqlCommand sqlCmd;
         List<Field> returnfields = new List<Field>();
 
-        string sql = null;
+        string sql = type.Query;
 
-        connectionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
-        sql = "Select * from product";
+        connectionString = type.AuthenticationValues["ConnStr"];
+    
 
         sqlCnn = new SqlConnection(connectionString);
         try
@@ -41,7 +41,7 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
                     // add entry to ReturnFields list for each
 
                     // need to map db data types to TypeCode
-                    returnfields.Add(new Field(row["ColumnName"].ToString(), TypeCode.String, false));
+                    returnfields.Add(new Field(row["ColumnName"].ToString(), row["DataType"].ToString(), false));
             }
             sqlReader.Close();
             sqlCmd.Dispose();
