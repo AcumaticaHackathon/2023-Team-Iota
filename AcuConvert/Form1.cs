@@ -19,7 +19,11 @@ public partial class Form1 : Form
         _acumaticaConnector   = acumaticaConnector;
         _legacyConnector = legacyConnector;
         InitializeComponent();
+        sConnectorConnectString
     }
+
+    public string sConnectorConnectString = "Data Source=(local);Initial Catalog=AcuConvert;User ID=sa;password=";
+    string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
     private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
     {
