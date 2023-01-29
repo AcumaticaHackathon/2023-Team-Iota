@@ -1,16 +1,32 @@
-
+DROP TABLE  [dbo].SourceConnectionSetting
+GO
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SourceConnectionSetting')
 BEGIN
 
    CREATE TABLE [dbo].SourceConnectionSetting(
-      SettingID NVARCHAR(15) NOT NULL
+      SettingID NVARCHAR(30) NOT NULL
 	, Value VARCHAR(1026) NOT NULL
 
 	CONSTRAINT [SourceConnectionSetting_PK] PRIMARY KEY ([SettingID] )
    )
 END   
 GO
+
+
+-- Source ERP system
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemoteDatasource','(local)')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemoteInitCatalog','Hackathon')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemoteUserID','sa')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('RemotePassword','')
+
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalDatasource','(local)')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalInitCatalog','AcuConvert')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalUserID','sa')
+Insert Into SourceConnectionSetting (SettingID, Value) Values ('LocalPassword','')
+
+
+
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncInstance')
