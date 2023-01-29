@@ -31,101 +31,99 @@ partial class Form1
     {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabSettings = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.lblSourceERP = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.lblDestinationURL = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.tabControl1            = new System.Windows.Forms.TabControl();
+            this.tabSettings            = new System.Windows.Forms.TabPage();
+            this.label11                = new System.Windows.Forms.Label();
+            this.textBox8               = new System.Windows.Forms.TextBox();
+            this.label10                = new System.Windows.Forms.Label();
+            this.textBox7               = new System.Windows.Forms.TextBox();
+            this.label9                 = new System.Windows.Forms.Label();
+            this.textBox6               = new System.Windows.Forms.TextBox();
+            this.label8                 = new System.Windows.Forms.Label();
+            this.textBox5               = new System.Windows.Forms.TextBox();
+            this.lblSourceERP           = new System.Windows.Forms.Label();
+            this.comboBox3              = new System.Windows.Forms.ComboBox();
+            this.lblDestinationURL      = new System.Windows.Forms.Label();
+            this.comboBox2              = new System.Windows.Forms.ComboBox();
             this.lblSourceSQLConnection = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tabAR = new System.Windows.Forms.TabPage();
-            this.grdExceptions = new System.Windows.Forms.DataGridView();
-            this.grdMapping = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.addAcuField = new System.Windows.Forms.Button();
-            this.refreshLegacySchema = new System.Windows.Forms.Button();
-            this.cmbCustEndpointfields = new System.Windows.Forms.ComboBox();
-            this.refreshAcuSchema = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtCustomerLastRun = new System.Windows.Forms.DateTimePicker();
-            this.lblWhere1 = new System.Windows.Forms.Label();
-            this.txtWhereCustomer = new System.Windows.Forms.TextBox();
-            this.lblSelect = new System.Windows.Forms.Label();
-            this.txtFromCustomer = new System.Windows.Forms.TextBox();
-            this.chkProcessCustomers = new System.Windows.Forms.CheckBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.grpCustomerAddress = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtWhereCustAddr = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSelectCustAddr = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.tabAP = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.tabGL = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.btnRun = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.comboBox1              = new System.Windows.Forms.ComboBox();
+            this.tabAR                  = new System.Windows.Forms.TabPage();
+            this.grdExceptions          = new System.Windows.Forms.DataGridView();
+            this.grdMapping             = new System.Windows.Forms.DataGridView();
+            this.groupBox1              = new System.Windows.Forms.GroupBox();
+            this.textBox4               = new System.Windows.Forms.TextBox();
+            this.label7                 = new System.Windows.Forms.Label();
+            this.button4                = new System.Windows.Forms.Button();
+            this.addAcuField            = new System.Windows.Forms.Button();
+            this.refreshLegacySchema    = new System.Windows.Forms.Button();
+            this.cmbCustEndpointfields  = new System.Windows.Forms.ComboBox();
+            this.refreshAcuSchema       = new System.Windows.Forms.Button();
+            this.label5                 = new System.Windows.Forms.Label();
+            this.dtCustomerLastRun      = new System.Windows.Forms.DateTimePicker();
+            this.lblWhere1              = new System.Windows.Forms.Label();
+            this.txtWhereCustomer       = new System.Windows.Forms.TextBox();
+            this.lblSelect              = new System.Windows.Forms.Label();
+            this.txtFromCustomer        = new System.Windows.Forms.TextBox();
+            this.chkProcessCustomers    = new System.Windows.Forms.CheckBox();
+            this.tabPage7               = new System.Windows.Forms.TabPage();
+            this.grpCustomerAddress     = new System.Windows.Forms.GroupBox();
+            this.label1                 = new System.Windows.Forms.Label();
+            this.txtWhereCustAddr       = new System.Windows.Forms.TextBox();
+            this.label2                 = new System.Windows.Forms.Label();
+            this.txtSelectCustAddr      = new System.Windows.Forms.TextBox();
+            this.checkBox1              = new System.Windows.Forms.CheckBox();
+            this.tabAP                  = new System.Windows.Forms.TabPage();
+            this.groupBox2              = new System.Windows.Forms.GroupBox();
+            this.label3                 = new System.Windows.Forms.Label();
+            this.textBox1               = new System.Windows.Forms.TextBox();
+            this.label4                 = new System.Windows.Forms.Label();
+            this.textBox2               = new System.Windows.Forms.TextBox();
+            this.checkBox2              = new System.Windows.Forms.CheckBox();
+            this.tabGL                  = new System.Windows.Forms.TabPage();
+            this.tabPage1               = new System.Windows.Forms.TabPage();
+            this.tabPage2               = new System.Windows.Forms.TabPage();
+            this.tabPage3               = new System.Windows.Forms.TabPage();
+            this.tabPage4               = new System.Windows.Forms.TabPage();
+            this.tabPage6               = new System.Windows.Forms.TabPage();
+            this.btnRun                 = new System.Windows.Forms.Button();
+            this.bindingSource1         = new System.Windows.Forms.BindingSource(this.components);
+            this.button1                = new System.Windows.Forms.Button();
+            this.groupBox3              = new System.Windows.Forms.GroupBox();
+            this.label12                = new System.Windows.Forms.Label();
+            this.textBox9               = new System.Windows.Forms.TextBox();
+            this.label13                = new System.Windows.Forms.Label();
+            this.textBox10              = new System.Windows.Forms.TextBox();
+            this.checkBox3              = new System.Windows.Forms.CheckBox();
+            this.groupBox4              = new System.Windows.Forms.GroupBox();
+            this.label14                = new System.Windows.Forms.Label();
+            this.textBox11              = new System.Windows.Forms.TextBox();
+            this.label15                = new System.Windows.Forms.Label();
+            this.textBox12              = new System.Windows.Forms.TextBox();
+            this.checkBox4              = new System.Windows.Forms.CheckBox();
+            this.groupBox5              = new System.Windows.Forms.GroupBox();
+            this.label16                = new System.Windows.Forms.Label();
+            this.textBox13              = new System.Windows.Forms.TextBox();
+            this.label17                = new System.Windows.Forms.Label();
+            this.textBox14              = new System.Windows.Forms.TextBox();
+            this.checkBox5              = new System.Windows.Forms.CheckBox();
+            this.groupBox6              = new System.Windows.Forms.GroupBox();
+            this.label18                = new System.Windows.Forms.Label();
+            this.textBox15              = new System.Windows.Forms.TextBox();
+            this.label19                = new System.Windows.Forms.Label();
+            this.textBox16              = new System.Windows.Forms.TextBox();
+            this.checkBox6              = new System.Windows.Forms.CheckBox();
+            this.groupBox7              = new System.Windows.Forms.GroupBox();
+            this.label20                = new System.Windows.Forms.Label();
+            this.textBox17              = new System.Windows.Forms.TextBox();
+            this.label21                = new System.Windows.Forms.Label();
+            this.textBox18              = new System.Windows.Forms.TextBox();
+            this.checkBox7              = new System.Windows.Forms.CheckBox();
+            this.groupBox8              = new System.Windows.Forms.GroupBox();
+            this.label22                = new System.Windows.Forms.Label();
+            this.textBox19              = new System.Windows.Forms.TextBox();
+            this.label23                = new System.Windows.Forms.Label();
+            this.textBox20              = new System.Windows.Forms.TextBox();
+            this.checkBox8              = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabAR.SuspendLayout();
@@ -172,7 +170,7 @@ partial class Form1
             // 
             // tabSettings
             // 
-            this.tabSettings.Controls.Add(this.button2);
+
             this.tabSettings.Controls.Add(this.label11);
             this.tabSettings.Controls.Add(this.textBox8);
             this.tabSettings.Controls.Add(this.label10);
@@ -269,23 +267,7 @@ partial class Form1
             this.textBox5.Size = new System.Drawing.Size(206, 27);
             this.textBox5.TabIndex = 18;
             this.textBox5.Text = "Default";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 146);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(189, 20);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Destination Acumatica URL";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(202, 142);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(206, 27);
-            this.textBox3.TabIndex = 14;
+
             // 
             // lblSourceERP
             // 
@@ -1190,15 +1172,7 @@ partial class Form1
             this.checkBox8.TabIndex = 0;
             this.checkBox8.Text = "Process Oportunities";
             this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(253, 407);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
+
             // 
             // Form1
             // 
