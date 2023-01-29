@@ -13,10 +13,11 @@ namespace AcuConvert.Core.Models.Data.DB
 {
     public class SyncRow
     {
+        public bool  Selected     { get; set; } = false;
         public string InstanceID   { get; set; }
         public int    RowNbr       { get; set; }
         public Guid   NoteID       { get; set; }
-        public byte   Failed       { get; set; }
+        public bool   Failed       { get; set; }
         public string ErrorMessage { get; set; }
     }
 }

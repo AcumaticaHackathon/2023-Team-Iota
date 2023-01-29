@@ -25,91 +25,14 @@ public partial class Form1 : Form
         InitializeComponent();
         
     }
-
-    public string sConnectorConnectString = "Data Source=(local);Initial Catalog=AcuConvert;User ID=sa;password=";
-    string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-
+    
     private void Form1_Load(object sender, EventArgs e)
     {
-        SyncMappings = new List<SyncMapping>()
-        {
-            new SyncMapping()
-            {
-                SourceField= "source",
-                DestField= "target",
-            },
-        };
+        SyncMappings             = _syncRepository.GetSyncMapping("Customer").ToList();
         dataGridView1.DataSource = SyncMappings;
-
-
-        SyncRows = new List<SyncRow>()
-        {
-            new SyncRow()
-            {
-                RowNbr = 100,
-                NoteID = Guid.NewGuid(),
-                Failed = 1,
-                ErrorMessage = ""
-            }
-        };
+        
+        SyncRows                 = _syncRepository.GetSyncDataSet("Customer").ToList();
         grdExceptions.DataSource = SyncRows;
 
     }
-
-    private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void tabPage2_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void tabPage1_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void lblSourceSQLConnection_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void lblDestinationURL_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void lblSourceERP_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void lblDestinationInstance_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-
 }

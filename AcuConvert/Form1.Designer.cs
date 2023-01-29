@@ -104,7 +104,6 @@ partial class Form1
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1139, 684);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabSettings
             // 
@@ -123,7 +122,6 @@ partial class Form1
             this.tabSettings.TabIndex = 0;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
-            this.tabSettings.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // lblConnectorConnectString
             // 
@@ -209,7 +207,6 @@ partial class Form1
             this.tabAR.TabIndex = 1;
             this.tabAR.Text = "AR - Customer";
             this.tabAR.UseVisualStyleBackColor = true;
-            this.tabAR.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // grdExceptions
             // 

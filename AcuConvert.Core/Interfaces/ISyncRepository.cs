@@ -16,7 +16,8 @@ namespace AcuConvert.Core.Interfaces
     public interface ISyncRepository
     {
         IEnumerable<Field>                        GetSourceSchema(string instanceID);
-        IEnumerable<Row>                          GetSyncDataSet(string  instanceID);
+        IEnumerable<SyncRow>                          GetSyncDataSet(string  instanceID);
+        IEnumerable<SyncMapping>                  GetSyncMapping(string  instanceID);
         IEnumerable<KeyValuePair<string, string>> GetSourceConnectionSettings();
         AcumaticaConnectionContext                GetDestConnectionSettings();
         IEnumerable<KeyValuePair<string, string>> GetInstanceQuerySettings(string instanceID);
