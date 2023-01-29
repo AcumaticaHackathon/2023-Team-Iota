@@ -172,6 +172,7 @@ partial class Form1
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.button2);
             this.tabSettings.Controls.Add(this.label11);
             this.tabSettings.Controls.Add(this.textBox8);
             this.tabSettings.Controls.Add(this.label10);
@@ -180,8 +181,6 @@ partial class Form1
             this.tabSettings.Controls.Add(this.textBox6);
             this.tabSettings.Controls.Add(this.label8);
             this.tabSettings.Controls.Add(this.textBox5);
-            this.tabSettings.Controls.Add(this.label6);
-            this.tabSettings.Controls.Add(this.textBox3);
             this.tabSettings.Controls.Add(this.lblSourceERP);
             this.tabSettings.Controls.Add(this.comboBox3);
             this.tabSettings.Controls.Add(this.lblDestinationURL);
@@ -1192,6 +1191,15 @@ partial class Form1
             this.checkBox8.Text = "Process Oportunities";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(253, 407);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 34);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Save";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1288,8 +1296,6 @@ partial class Form1
     private Button button4;
     private Label label5;
     private DateTimePicker dtCustomerLastRun;
-    private Label label6;
-    private TextBox textBox3;
     private Button addAcuField;
     private ComboBox cmbCustEndpointfields;
     private Label label8;

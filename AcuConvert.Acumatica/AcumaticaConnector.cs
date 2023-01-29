@@ -66,6 +66,7 @@ namespace AcuConvert.Acumatica
                 ? new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource + "/" +row.NoteId, Method.Put) // Update
                 : new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource, Method.Put); // Insert
             putRequest.AddJsonBody(acuRow.ToString());
+            putRequest.AddQueryParameter("$expand", "MainContact,PrimaryContact");
             var response = _client.Execute(putRequest);
             if (!response.IsSuccessful)
             {
