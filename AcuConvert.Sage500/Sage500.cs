@@ -20,12 +20,12 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
         List<Row> returnrows = new List<Row>();
 
         string sql = type
-                           .AuthenticationValues.FirstOrDefault(v =>
+                           .QueryParameters.FirstOrDefault(v =>
                                 string.Equals(v.Key, "Query", StringComparison.OrdinalIgnoreCase)).Value;
         
         string lastmodifiedfield = type.QueryParameters.FirstOrDefault(v => string.Equals(v.Key, "LastModifiedField",StringComparison.OrdinalIgnoreCase)).Value;
 
-        sql += " and " + lastmodifiedfield + " > '" + lastRunDate + "'";
+        sql = sql + " and " + lastmodifiedfield + " > '" + lastRunDate + "'";
 
         sqlCnn = MakeSqlConnection(type);
         try
@@ -105,7 +105,7 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
         List<Field> returnfields = new List<Field>();
 
         string sql = type
-                    .AuthenticationValues.FirstOrDefault(v =>
+                    .QueryParameters.FirstOrDefault(v =>
                          string.Equals(v.Key, "Query", StringComparison.OrdinalIgnoreCase)).Value;
         sqlCnn = MakeSqlConnection(type);
         try
