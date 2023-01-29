@@ -16,30 +16,6 @@ namespace AcuConvert.Core
 {
     public class AcumaticaConnector : IAcumaticaConnector
     {
-        public IEnumerable<Field> GetSchema(string type)
-        {
-            IJasonInput jasonInput = new JsonFileReader();
-            string json = jasonInput.GetSwaggerJsonString();
-          
-         
-            // to be tested for dynamic select
-            var jsonDom = JsonConvert.DeserializeObject<JObject>(json)!;
-            var toBeTestted = jsonDom.SelectToken(string.Format("$.definitions.{0}.allOf[1].properties", type))!.ToArray();
-
-            // with hardcoded
-            dynamic dynamicObject = JsonConvert.DeserializeObject<ExpandoObject>(json)!;
-            IDictionary<string, object> properties = dynamicObject.definitions.Customer.allOf[1].properties;
-
-            var fields = new List<Field>();
-
-            foreach (var prop in properties) 
-            {
-                IDictionary<string, object> valeObject = (IDictionary<string, object>)prop.Value;
-                fields.Add(new Field (prop.Key, TypeUtil.GetTypeCode((string)valeObject.First().Value),false));
-            }
-
-            return fields;
-        }
 
         public void Initialize(AcumaticaConnectionContext context)
         {
@@ -53,7 +29,28 @@ namespace AcuConvert.Core
 
         IEnumerable<Field> IAcumaticaConnector.GetSchema(string acuObject)
         {
-            throw new NotImplementedException();
+            IJasonInput jasonInput = new JsonFileReader();
+            string json = jasonInput.GetSwaggerJsonString();
+
+
+            // to be tested for dynamic select
+            var jsonDom = JsonConvert.DeserializeObject<JObject>(json)!;
+            var toBeTestted = jsonDom.SelectToken(string.Format("$.definitions.{0}.allOf[1].properties", acuObject))!.ToArray();
+
+            // with hardcoded
+            dynamic dynamicObject = JsonConvert.DeserializeObject<ExpandoObject>(json)!;
+            IDictionary<string, object> properties = dynamicObject.definitions.Customer.allOf[1].properties;
+
+            var fields = new List<Field>();
+
+            foreach (var prop in properties)
+            {
+                IDictionary<string, object> valeObject = (IDictionary<string, object>)prop.Value;
+                var typeValueString = valeObject.First().Value as string;
+                fields.Add(new Field(prop.Key, TypeUtil.GetTypeCode(typeValueString), false));
+            }
+
+            return fields;
         }
     }
 }
