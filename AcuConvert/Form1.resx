@@ -64,11 +64,7 @@ FROM  tarCustomer a 
    JOIN tarCustClass c ON a.CustClassKey = c.CustClassKey 
    LEFT OUTER JOIN tciAddress d ON a.DfltBillToAddrKey = d.AddrKey
    LEFT OUTER JOIN tciContact e ON a.PrimaryCntctkey = e.CntctKey
-   LEFT OUTER JOIN tglAccount f ON a.DfltSalesAcctkey = f.GLAcctKey
-WHERE  a.CompanyID = 'JMS' 
-   AND  IsNull(a.CustKey,0) &lt;&gt; 0 
-   AND  a.Status = 1
-ORDER BY a.CustID</value>
+   LEFT OUTER JOIN tglAccount f ON a.DfltSalesAcctkey = f.GLAcctKey</value>
   </data>
   <data name="textBox2.Text" xml:space="preserve">
     <value>SELECT a.CustKey,a.CustID,a.CustName,a.Status,a.CreateDate,a.UpdateDate,c.CustClassID,f.GLAcctNo,

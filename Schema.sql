@@ -58,6 +58,7 @@ BEGIN
 END   
 GO
 
+DROP TABLE SyncMapping
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncMapping')
 BEGIN
@@ -73,23 +74,22 @@ BEGIN
 END   
 GO
 
-
+TRUNCATE TABLE SyncMapping
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustKey','')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustID' ,'CustomerID')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustName','CustomerName')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Status','Status')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Status','')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CreateDate','')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','UpdateDate','')
 Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustClassID','CustomerClass')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine1','Address/AddressLine1')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine2','Address/AddressLine2')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address/CountryID')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','City','Address/City')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','StateID','Address/State')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','Address/CountryID')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Name','Contact/FirstName')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Phone','Contact/Phone1')
-Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','EmailAddr','Contact/EMail')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine1','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine2','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','City','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','StateID','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Name','PrimaryContact/FirstName')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Phone','MainContact/Phone1')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','EmailAddr','MainContact/EMail')
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncRow')
@@ -98,7 +98,7 @@ BEGIN
    CREATE TABLE [dbo].SyncRow(
       InstanceID VARCHAR(15) NOT NULL FOREIGN KEY REFERENCES SyncInstance(InstanceID)
 	, RowNbr INT NOT NULL
-	, NoteID UniqueIdentifier NULL
+	, NoteID varchar(256) NULL
 	, Failed TINYINT NOT NULL DEFAULT 0
 	, ErrorMessage NVARCHAR(MAX) NULL
 

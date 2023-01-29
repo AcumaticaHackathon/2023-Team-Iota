@@ -20,31 +20,31 @@ public partial class Form1 : Form
     private readonly ILegacyConnector         _legacyConnector;
     private readonly RecordReconciliator      _reconciliator;
 
-    public Form1(ISyncRepository syncRepository,
-                 ISyncWorker syncWorker,
+    public Form1(ISyncRepository     syncRepository,
+                 ISyncWorker         syncWorker,
                  IAcumaticaConnector acumaticaConnector,
-                 ILegacyConnector legacyConnector,
+                 ILegacyConnector    legacyConnector,
                  RecordReconciliator reconciliator)
     {
         _syncRepository     = syncRepository;
         _syncWorker         = syncWorker;
         _acumaticaConnector = acumaticaConnector;
         _legacyConnector    = legacyConnector;
-        _reconciliator = reconciliator;
+        _reconciliator      = reconciliator;
         InitializeComponent();
-        
+        SyncFields = new BindingList<SyncField>();
     }
-    
+
     private void Form1_Load(object sender, EventArgs e)
     {
         SyncMappings             = new BindingList<SyncMapping>(_syncRepository.GetSyncMapping("Customer").ToList());
         dataGridView1.DataSource = SyncMappings;
-        
+
         SyncRows                 = new BindingList<SyncRow>(_syncRepository.GetSyncDataSet("Customer").ToList());
         grdExceptions.DataSource = SyncRows;
 
         this.Instance = _syncRepository.GetSyncInstance("customer");
-
+        _acumaticaConnector.Initialize(new AcumaticaConnectionContext("https://hackathon.acumatica.com/iota", "admin", "123", "", "Default", "20.200.001", "Customer", "Customer"));
     }
 
     private void button3_Click(object sender, EventArgs e)
@@ -66,9 +66,9 @@ public partial class Form1 : Form
                 SyncMappings.Add(new SyncMapping()
                 {
                     SourceField = item.FieldName,
-                    InstanceID = "Customer",
-                    DestField = string.Empty,
-                    MappingID = SyncMappings.Count + 1,
+                    InstanceID  = "Customer",
+                    DestField   = string.Empty,
+                    MappingID   = SyncMappings.Count + 1,
                     SourceValue = string.Empty
                 });
             }
@@ -83,9 +83,10 @@ public partial class Form1 : Form
             AuthenticationValues = _syncRepository.GetSourceConnectionSettings().ToArray(),
             QueryParameters = new List<KeyValuePair<string, string>>()
             {
-                new KeyValuePair<string, string>("Query", this.txtFromCustomer.Text + " " + this.txtWhereCustomer.Text)
+                new KeyValuePair<string, string>("Query", this.txtFromCustomer.Text + " " + this.txtWhereCustomer.Text),
+                new KeyValuePair<string, string>("LastModifiedField", "a.UpdateDate")
             }
-        }, Instance.LastRun ?? new DateTime(1900, 1, 1));
+        }, dtCustomerLastRun.Value);
 
         // Dictionary<int, Row> rowDic = new Dictionary<int, Row>();
         // foreach (SyncRow row in SyncRows)
@@ -103,24 +104,91 @@ public partial class Form1 : Form
             SyncRows.Add(new SyncRow()
             {
                 InstanceID = "Customer",
-                RowNbr = rowNbr,
-                Selected = false
+                RowNbr     = rowNbr,
+                Selected   = false
             });
 
             foreach (KeyValuePair<string, Field> field in item.Fields)
             {
                 SyncFields.Add(new SyncField()
                 {
-                    DataType = "String",
-                    InstanceID = "Customer",
-                    RowNbr = rowNbr,
+                    DataType        = "String",
+                    InstanceID      = "Customer",
+                    RowNbr          = rowNbr,
                     SourceFieldName = field.Value.FieldName,
-                    Value = field.Value.Value
+                    Value           = field.Value.Value
                 });
             }
 
             rowNbr++;
         }
-        Instance.LastRun = DateTime.Now;
+
+        Instance.LastRun        = DateTime.Now;
+        dtCustomerLastRun.Value = DateTime.Now;
+    }
+
+    private void btnRun_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            Dictionary<string, SyncMapping> mappings = new Dictionary<string, SyncMapping>(
+                SyncMappings.Select(a => new KeyValuePair<string, SyncMapping>(a.SourceField, a)));
+            foreach (SyncRow row in SyncRows)
+            {
+                try
+                {
+                    var fields  = SyncFields.Where(f => f.RowNbr == row.RowNbr);
+                    var destRow = new Row("Customer", row.RowNbr);
+                    destRow.NoteId = row.NoteID;
+
+                    foreach (SyncField field in fields)
+                    {
+                        Field destField;
+                        if (mappings.TryGetValue(field.SourceFieldName, out SyncMapping value)
+                         && !string.IsNullOrWhiteSpace(value?.DestField))
+                        {
+                            // We have mapping to dest field
+                            if (!string.IsNullOrWhiteSpace(value.SourceValue))
+                            {
+                                // we have override
+                                destField = new Field(value.DestField, "String", false)
+                                {
+                                    Value = value.SourceValue
+                                };
+                            }
+                            else
+                            {
+                                destField = new Field(value.DestField, "String", false)
+                                {
+                                    Value = field.Value
+                                };
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                        destRow.AddField(destField);
+                    }
+
+                    row.NoteID = _acumaticaConnector.SendRow(destRow);
+                    row.Processed    = true;
+                    row.ErrorMessage = string.Empty;
+                    row.Failed       = false;
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    row.ErrorMessage = exception.Message;
+                    row.Failed       = true;
+                }
+            }
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception);
+            throw;
+        }
+        grdExceptions.Refresh();
     }
 }

@@ -45,6 +45,8 @@ partial class Form1
             this.grdExceptions = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtCustomerLastRun = new System.Windows.Forms.DateTimePicker();
             this.lblWhere1 = new System.Windows.Forms.Label();
             this.txtWhereCustomer = new System.Windows.Forms.TextBox();
             this.lblSelect = new System.Windows.Forms.Label();
@@ -249,6 +251,8 @@ partial class Form1
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.dtCustomerLastRun);
             this.groupBox1.Controls.Add(this.lblWhere1);
             this.groupBox1.Controls.Add(this.txtWhereCustomer);
             this.groupBox1.Controls.Add(this.lblSelect);
@@ -263,6 +267,22 @@ partial class Form1
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customers";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(281, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 25);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Last Run";
+            // 
+            // dtCustomerLastRun
+            // 
+            this.dtCustomerLastRun.Location = new System.Drawing.Point(376, 33);
+            this.dtCustomerLastRun.Name = "dtCustomerLastRun";
+            this.dtCustomerLastRun.Size = new System.Drawing.Size(300, 31);
+            this.dtCustomerLastRun.TabIndex = 5;
             // 
             // lblWhere1
             // 
@@ -554,6 +574,7 @@ partial class Form1
             this.btnRun.TabIndex = 1;
             this.btnRun.Text = "Run ...";
             this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // button1
             // 
@@ -679,4 +700,6 @@ partial class Form1
     private Button button2;
     private Button button3;
     private Button button4;
+    private Label label5;
+    private DateTimePicker dtCustomerLastRun;
 }

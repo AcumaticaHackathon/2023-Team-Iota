@@ -33,35 +33,36 @@ namespace AcuConvert.Acumatica
             if (!response.IsSuccessful) throw new InvalidOperationException("Could not connect to Acumatica");
         }
 
-        public void SendRow(Row row)
+        public string SendRow(Row row)
         {
             JObject acuRow = new JObject();
 
             foreach (var field in row.Fields)
             {
                 // Try to see if we have a sub class
-                JObject workingWith = acuRow;
-                var     match       = Regex.Match(field.Value.FieldName, @"(?<name>\w+)\/");
+                JObject workingWith   = acuRow;
+                var     match         = Regex.Match(field.Value.FieldName, @"(?<name>\w+)\/");
+                string  propertyValue = field.Value.FieldName;
                 if (match.Success)
                 {
                     // We need to make a sub object
                     if (!acuRow.TryGetValue(match.Groups["name"].Value,
                             StringComparison.OrdinalIgnoreCase, out JToken? existingObj))
                     {
-                        workingWith = new JObject();
-                        acuRow.Add(match.Groups["name"].Value, workingWith);
+                        workingWith   = new JObject();
+                        acuRow.Add(new JProperty(match.Groups["name"].Value, workingWith));
                     }
                 }
 
                 switch (field.Value.DataType)
                 {
                     case "String":
-                        workingWith.AddStringValue(field.Value.FieldName, field.Value.Value);
+                        workingWith.AddStringValue(field.Value.FieldName.Replace(match.Groups["name"].Value + "/", ""), field.Value.Value);
                         break;
                 }
             }
 
-            var putRequest = row.NoteId.HasValue
+            var putRequest = !string.IsNullOrWhiteSpace(row.NoteId)
                 ? new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource + "/" +row.NoteId, Method.Put) // Update
                 : new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource, Method.Put); // Insert
             putRequest.AddJsonBody(acuRow.ToString());
@@ -70,6 +71,9 @@ namespace AcuConvert.Acumatica
             {
                 throw new HttpRequestException();
             }
+
+            var     responseObject = JObject.Parse(response.Content);
+            return responseObject["id"]?.Value<string>();
         }
 
         IEnumerable<Field> IAcumaticaConnector.GetSchema(string acuObject)

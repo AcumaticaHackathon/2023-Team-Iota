@@ -22,7 +22,7 @@ namespace AcuConvert.Core.Models.Data
 
         public string InstanceID { get; }
         public int    RowNbr     { get; }
-        public Guid?  NoteId     { get; set; }
+        public string  NoteId     { get; set; }
 
         public ICollection<KeyValuePair<string, Field>> KeyFields =>
             _fields.Where(f => f.Key.StartsWith("!")).ToArray();
@@ -37,7 +37,7 @@ namespace AcuConvert.Core.Models.Data
             string key = field.IsKey ? "!" + field.FieldName.Trim() : field.FieldName.Trim();
             if (!_fields.TryAdd(key, field))
             {
-                throw new InvalidOperationException("Field already exists");
+               
             }
         }
 

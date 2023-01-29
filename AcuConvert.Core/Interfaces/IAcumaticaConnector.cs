@@ -15,7 +15,7 @@ namespace AcuConvert.Core.Interfaces
     public interface IAcumaticaConnector
     {
         void               Initialize(AcumaticaConnectionContext context);
-        void               SendRow(Row                           row);
+        string               SendRow(Row                           row);
         IEnumerable<Field> GetSchema(string acuObject);
     }
 }
