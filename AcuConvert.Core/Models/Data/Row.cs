@@ -20,14 +20,17 @@ namespace AcuConvert.Core.Models.Data
             _fields    = new Dictionary<string, Field>();
         }
 
-        public string                                  InstanceID { get; }
-        public int                                     RowNbr     { get; }
-        public Guid?                                   NoteId     { get; set; }
-        public ICollection<KeyValuePair<string,Field>> KeyFields  => _fields.Where(f => f.Key.StartsWith("!")).ToArray();
-        public Dictionary<string,Field>                Fields     => _fields;
-        public bool Failed { get; set; } = false;
-        public string ErrorText { get; set; } = string.Empty;
-        public bool Processed { get; set; } = false;
+        public string InstanceID { get; }
+        public int    RowNbr     { get; }
+        public Guid?  NoteId     { get; set; }
+
+        public ICollection<KeyValuePair<string, Field>> KeyFields =>
+            _fields.Where(f => f.Key.StartsWith("!")).ToArray();
+
+        public Dictionary<string, Field> Fields    => _fields;
+        public bool                      Failed    { get; set; } = false;
+        public string                    ErrorText { get; set; } = string.Empty;
+        public bool                      Processed { get; set; } = false;
 
         public void AddField(Field field)
         {
