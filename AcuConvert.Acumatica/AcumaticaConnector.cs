@@ -74,19 +74,15 @@ namespace AcuConvert.Acumatica
 
         IEnumerable<Field> IAcumaticaConnector.GetSchema(string acuObject)
         {
-            IJasonInput jasonInput = new JsonFileReader();
-            string      json       = jasonInput.GetSwaggerJsonString();
+            var request = new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/swagger.json", Method.Post);
 
+            var response = _client.Execute(request);
+            string json = response.Content.ToString();
 
             // to be tested for dynamic select
             var jsonDom = JsonConvert.DeserializeObject<JObject>(json)!;
             var toBeTestted = jsonDom.SelectToken(string.Format("$.definitions.{0}.allOf[1].properties", acuObject))!
                                      .ToArray();
-
-            foreach (var p in toBeTestted)
-            {
-                // var r =p.;
-            }
 
             // with hardcoded
             dynamic                     dynamicObject = JsonConvert.DeserializeObject<ExpandoObject>(json)!;

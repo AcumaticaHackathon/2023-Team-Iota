@@ -1,4 +1,5 @@
 ﻿using AcuConvert.Acumatica.Interfaces;
+using AcuConvert.Core.Interfaces;
 
 namespace AcuConvert.Acumatica
 {
