@@ -7,6 +7,7 @@ namespace AcuConvert;
 public partial class Form1 : Form
 {
     public List<SyncMapping> SyncMappings { get; set; }
+    public List<SyncRow> SyncRows { get; set; }
     private readonly ISyncRepository     _syncRepository;
     private readonly ISyncWorker         _syncWorker;
     private readonly IAcumaticaConnector _acumaticaConnector;
@@ -30,7 +31,29 @@ public partial class Form1 : Form
 
     private void Form1_Load(object sender, EventArgs e)
     {
+        SyncMappings = new List<SyncMapping>()
+        {
+            new SyncMapping()
+            {
+                SourceField= "source",
+                DestField= "target",
+              
+            },
+        };
         dataGridView1.DataSource = SyncMappings;
+
+
+        SyncRows = new List<SyncRow>()
+        {
+            new SyncRow()
+            {
+                RowNbr = 100,
+                NoteID = Guid.NewGuid(),
+                Failed = 1,
+                ErrorMessage = ""
+            }
+        };
+        grdExceptions.DataSource = SyncRows;
 
     }
 
