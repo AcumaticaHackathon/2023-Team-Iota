@@ -24,9 +24,16 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
         List<Field> returnfields = new List<Field>();
 
         string sql = type.Query;
+        //Datasource
+        //InitCatalog
+        //UserID
+        //Password
+        string datasource = type.AuthenticationValues["Datasource"];
+        string initcat = type.AuthenticationValues["InitCatalog"];
+        string userID = type.AuthenticationValues["UserID"];
+        string password = type.AuthenticationValues["Password"];
 
-        connectionString = type.AuthenticationValues["ConnStr"];
-    
+        connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", datasource,initcat, userID, password);
 
         sqlCnn = new SqlConnection(connectionString);
         try
