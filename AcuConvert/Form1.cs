@@ -37,7 +37,6 @@ public partial class Form1 : Form
             {
                 SourceField= "source",
                 DestField= "target",
-              
             },
         };
         dataGridView1.DataSource = SyncMappings;
