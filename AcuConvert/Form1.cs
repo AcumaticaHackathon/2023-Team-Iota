@@ -211,4 +211,9 @@ public partial class Form1 : Form
         var curRow = grdMapping.CurrentRow;
         curRow.Cells["Destfield"].Value = cmbCustEndpointfields.SelectedItem;
     }
+
+    private void label8_Click(object sender, EventArgs e)
+    {
+
+    }
 }

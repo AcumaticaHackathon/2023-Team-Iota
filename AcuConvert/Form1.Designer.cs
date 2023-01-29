@@ -83,6 +83,14 @@ partial class Form1
             this.btnRun = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabAR.SuspendLayout();
@@ -118,6 +126,14 @@ partial class Form1
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.label11);
+            this.tabSettings.Controls.Add(this.textBox8);
+            this.tabSettings.Controls.Add(this.label10);
+            this.tabSettings.Controls.Add(this.textBox7);
+            this.tabSettings.Controls.Add(this.label9);
+            this.tabSettings.Controls.Add(this.textBox6);
+            this.tabSettings.Controls.Add(this.label8);
+            this.tabSettings.Controls.Add(this.textBox5);
             this.tabSettings.Controls.Add(this.label7);
             this.tabSettings.Controls.Add(this.textBox4);
             this.tabSettings.Controls.Add(this.label6);
@@ -149,7 +165,7 @@ partial class Form1
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(251, 233);
+            this.textBox4.Location = new System.Drawing.Point(253, 233);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(257, 31);
@@ -167,7 +183,7 @@ partial class Form1
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(251, 177);
+            this.textBox3.Location = new System.Drawing.Point(253, 177);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(257, 31);
@@ -650,7 +666,7 @@ partial class Form1
             // btnRun
             // 
             this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRun.Location = new System.Drawing.Point(1306, 1152);
+            this.btnRun.Location = new System.Drawing.Point(1306, 999);
             this.btnRun.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(294, 42);
@@ -662,7 +678,7 @@ partial class Form1
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(984, 1152);
+            this.button1.Location = new System.Drawing.Point(984, 999);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(313, 42);
@@ -671,11 +687,85 @@ partial class Form1
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(253, 281);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(257, 31);
+            this.textBox5.TabIndex = 18;
+            this.textBox5.Text = "Default";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(27, 284);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(136, 25);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Endpoint Name";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(27, 330);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(147, 25);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Endpoint Version";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(253, 327);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(257, 31);
+            this.textBox6.TabIndex = 20;
+            this.textBox6.Text = "20.200.001";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(27, 376);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 25);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Usename";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(253, 373);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(257, 31);
+            this.textBox7.TabIndex = 22;
+            this.textBox7.Text = "admin";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(27, 422);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(87, 25);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Password";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(253, 419);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.PasswordChar = '*';
+            this.textBox8.Size = new System.Drawing.Size(257, 31);
+            this.textBox8.TabIndex = 24;
+            this.textBox8.Text = "123";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1617, 1203);
+            this.ClientSize = new System.Drawing.Size(1617, 1050);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.tabControl1);
@@ -756,4 +846,12 @@ partial class Form1
     private TextBox textBox3;
     private Button addAcuField;
     private ComboBox cmbCustEndpointfields;
+    private Label label8;
+    private TextBox textBox5;
+    private Label label11;
+    private TextBox textBox8;
+    private Label label10;
+    private TextBox textBox7;
+    private Label label9;
+    private TextBox textBox6;
 }
