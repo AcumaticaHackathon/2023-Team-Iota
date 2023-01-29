@@ -62,11 +62,8 @@ namespace AcuConvert.Acumatica
             }
 
             var putRequest = row.NoteId.HasValue
-                ? new RestRequest(
-                    $"entity/{_context.EndpointName}/{_context.EndpointVersion}" + _context.Resource + "/" + row.NoteId,
-                    Method.Put) // Update
-                : new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}" + _context.Resource,
-                    Method.Put); // Insert
+                ? new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource + "/" +row.NoteId, Method.Put) // Update
+                : new RestRequest($"entity/{_context.EndpointName}/{_context.EndpointVersion}/" + _context.Resource, Method.Put); // Insert
             putRequest.AddJsonBody(acuRow);
             var response = _client.Execute(putRequest);
             if (!response.IsSuccessful)
