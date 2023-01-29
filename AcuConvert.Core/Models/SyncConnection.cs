@@ -7,11 +7,15 @@
 // ----------------------------------------------------------------------------------
 #endregion
 
+using AcuConvert.Core.Models.Data;
+
 namespace AcuConvert.Core.Models
 {
     public class SyncConnection
     {
         public AcumaticaConnectionContext AcumaticaConnectionContext { get; set; }
         public LegacyConnectionContext    LegacyConnectionContext    { get; set; }
+        public DateTime                          LastRun                          { get; set; }
+        public Dictionary<int,Row>        Rows                       { get; set; }
     }
 }

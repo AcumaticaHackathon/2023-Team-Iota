@@ -13,7 +13,10 @@ namespace AcuConvert.Core.Models.Data
     {
         public Field(string fieldName, string dataType, bool isKey)
         {
-            FieldName = fieldName ?? throw new ArgumentNullException(nameof(fieldName));
+            if(string.IsNullOrWhiteSpace(fieldName)) throw new ArgumentNullException(nameof(fieldName));
+            if(string.IsNullOrWhiteSpace(dataType)) throw new ArgumentNullException(nameof(dataType));
+
+            FieldName = fieldName;
             DataType  = dataType;
             IsKey     = isKey;
         }
