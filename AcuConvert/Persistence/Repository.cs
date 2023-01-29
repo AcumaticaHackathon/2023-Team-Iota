@@ -26,7 +26,6 @@ namespace AcuConvert.Persistence
             builder.DataSource         = "localhost";
             builder.IntegratedSecurity = true;
             builder.InitialCatalog     = "Hackathon";
-            
             builder.UserID             = @"TELAVI\KyleVanderstoep";
             
             _conn    = new SqlConnection(builder.ToString());
@@ -54,15 +53,21 @@ namespace AcuConvert.Persistence
         public IEnumerable<KeyValuePair<string, string>> GetSourceConnectionSettings()
         {
             var querySettings =
-                _conn.Query<ConnectionSetting>($"SELECT * FROM ConnectionSetting Where IsDest = 1");
+                _conn.Query<SourceConnectionSetting>($"SELECT * FROM SourceConnectionSetting");
 
-            return querySettings.Select(i => new KeyValuePair<string, string>(i.SettingID?.Trim(), i.Value?.Trim()));
+            return new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>("Datasource", ""),
+                new KeyValuePair<string, string>("initcat", ""),
+                new KeyValuePair<string, string>("userID", ""),
+                new KeyValuePair<string, string>("password", ""),
+            };
         }
 
         public AcumaticaConnectionContext                GetDestConnectionSettings(string instanceId)
         {
             var querySettings =
-                _conn.Query<ConnectionSetting>($"SELECT * FROM ConnectionSetting Where IsDest = 1").ToArray();
+                _conn.Query<SourceConnectionSetting>($"SELECT * FROM ConnectionSetting Where IsDest = 1").ToArray();
             var syncInstance =
                 GetSyncInstance(instanceId) ?? throw new ArgumentNullException("GetSyncInstance(instanceId)");
             

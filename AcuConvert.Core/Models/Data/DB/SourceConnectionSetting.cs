@@ -11,7 +11,7 @@
 
 namespace AcuConvert.Core.Models.Data.DB
 {
-    public class ConnectionSetting
+    public class SourceConnectionSetting
     {
         public bool   IsDest    { get; set; }
         public string SettingID { get; set; }

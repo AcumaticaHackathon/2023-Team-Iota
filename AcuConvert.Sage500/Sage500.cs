@@ -91,8 +91,13 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
 
         connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", datasource,
             initcat, userID, password);
+        var builder = new SqlConnectionStringBuilder();
+        builder.DataSource         = "localhost";
+        builder.IntegratedSecurity = true;
+        builder.InitialCatalog     = "Hackathon";
+        builder.UserID             = @"TELAVI\KyleVanderstoep";
 
-        sqlCnn = new SqlConnection(connectionString);
+        sqlCnn                     = new SqlConnection(builder.ToString());
         return sqlCnn;
     }
 
