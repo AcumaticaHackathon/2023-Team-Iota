@@ -9,11 +9,12 @@
 
 #endregion
 
-namespace AcuConvert.Core.Models.Data
+namespace AcuConvert.Core.Models.Data.DB
 {
-    public class SourceConnectionSetting
+    public class SourceQuerySetting
     {
-        public string SettingID { get; set; }
-        public string Value     { get; set; }
+        public string InstanceID { get; set; }
+        public string SettingID  { get; set; }
+        public string Value      { get; set; }
     }
 }

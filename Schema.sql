@@ -50,15 +50,15 @@ END
 GO
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
-              WHERE TABLE_NAME = 'SourceQueryString')
+              WHERE TABLE_NAME = 'SourceQuerySetting')
 BEGIN
 
-   CREATE TABLE [dbo].SourceQueryString(
+   CREATE TABLE [dbo].SourceQuerySetting(
       InstanceID VARCHAR(15) NOT NULL FOREIGN KEY REFERENCES SyncInstance(InstanceID)
 	, SettingID VARCHAR(15) NOT NULL
 	, Value VARCHaR(1026) NOT NULL
 	
-	CONSTRAINT [SourceQueryString_PK] PRIMARY KEY ( [InstanceID], [SettingID] )
+	CONSTRAINT [SourceQuerySetting_PK] PRIMARY KEY ( [InstanceID], [SettingID] )
 
    )
 END   
