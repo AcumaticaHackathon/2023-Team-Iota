@@ -7,19 +7,22 @@
 // ----------------------------------------------------------------------------------
 #endregion
 
-namespace AcuConvert.Core.Models
+namespace AcuConvert.Core.Models.Data
 {
     public class Field
     {
-        public Field(string fieldName, TypeCode dataType, bool isKey)
+        public Field(string fieldName, string dataType, bool isKey)
         {
-            FieldName = fieldName ?? throw new ArgumentNullException(nameof(fieldName));
+            if(string.IsNullOrWhiteSpace(fieldName)) throw new ArgumentNullException(nameof(fieldName));
+            if(string.IsNullOrWhiteSpace(dataType)) throw new ArgumentNullException(nameof(dataType));
+
+            FieldName = fieldName;
             DataType  = dataType;
             IsKey     = isKey;
         }
 
         public string   FieldName { get; }
-        public TypeCode DataType  { get; }
+        public string DataType  { get; }
         public bool     IsKey     { get; }
         public object   Value     { get; set; }
     }

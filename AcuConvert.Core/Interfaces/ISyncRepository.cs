@@ -12,10 +12,11 @@ using AcuConvert.Core.Models.Data;
 
 namespace AcuConvert.Core.Interfaces
 {
-    public interface IAcumaticaConnector
+    public interface ISyncRepository
     {
-        void               Initialize(AcumaticaConnectionContext context);
-        void               SendRow(Row                           row);
-        IEnumerable<Field> GetSchema(string acuObject);
+        IEnumerable<Field>                        GetSourceSchema(string instanceID);
+        IEnumerable<Row>                          GetSyncDataSet(string  instanceID);
+        IEnumerable<KeyValuePair<string, string>> GetSourceConnectionSettings();
+        IEnumerable<KeyValuePair<string, string>> GetInstanceQuerySettings(string instanceID);
     }
 }

@@ -8,12 +8,13 @@
 #endregion
 
 using AcuConvert.Core.Models;
+using AcuConvert.Core.Models.Data;
 
 namespace AcuConvert.Core.Interfaces
 {
     public interface ILegacyConnector
     {
-        IEnumerable<Field> GetSchema(EntityType type);
-        IEnumerable<Row>   GetDataSet(DateTime  lastRunDate);
+        IEnumerable<Field> GetSchema(LegacyConnectionContext type);
+        IEnumerable<Row>   GetDataSet(LegacyConnectionContext type, DateTime lastRunDate);
     }
 }

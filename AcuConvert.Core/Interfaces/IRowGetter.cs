@@ -7,10 +7,13 @@
 // ----------------------------------------------------------------------------------
 #endregion
 
-namespace AcuConvert.Core.Models
+using AcuConvert.Core.Models;
+
+namespace AcuConvert.Core.Interfaces
 {
-    public class Row
+    public interface ISyncWorker
     {
-        public List<Field> Fields { get; set; } = new();
+        void PrepareData(SyncConnection connection);
+        void ProcessData(SyncConnection connection);
     }
 }
