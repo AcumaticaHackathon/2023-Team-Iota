@@ -1,17 +1,19 @@
 ﻿using AcuConvert.Core;
 using AcuConvert.Core.Models;
+
+using AcuConvert.Core.Models.Data;
 using System.Data;
 using System.Data.SqlClient;
 namespace AcuConvert.Sage500;
 
-public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector
+public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.Core.Interfaces
 {
-    public IEnumerable<Row> GetDataSet(DateTime lastRunDate)
+    public IEnumerable<Row> GetDataSet(LegacyConnectionContext type, DateTime lastRunDate)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<Field> GetSchema(EntityType type)
+    public IEnumerable<Field> GetSchema(LegacyConnectionContext type)
     {
 
         string connectionString = null;
@@ -37,7 +39,7 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector
                     // add entry to ReturnFields list for each
 
                     // need to map db data types to TypeCode
-                    returnfields.Add(new Field(column.ColumnName, TypeCode.String, false));
+                    returnfields.Add(new Field(row["ColumnName"].ToString(), TypeCode.String, false));
             }
             sqlReader.Close();
             sqlCmd.Dispose();
