@@ -19,19 +19,10 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
         SqlCommand sqlCmd;
         List<Row> returnrows = new List<Row>();
 
-        string sql = type.Query;
-        //Datasource
-        //InitCatalog
-        //UserID
-        //Password
-        string datasource = type.AuthenticationValues["Datasource"];
-        string initcat = type.AuthenticationValues["InitCatalog"];
-        string userID = type.AuthenticationValues["UserID"];
-        string password = type.AuthenticationValues["Password"];
-
-        connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", datasource, initcat, userID, password);
-
-        sqlCnn = new SqlConnection(connectionString);
+        string sql = type
+                           .AuthenticationValues.FirstOrDefault(v =>
+                                string.Equals(v.Key, "Query", StringComparison.OrdinalIgnoreCase)).Value;
+        sqlCnn = MakeSqlConnection(type);
         try
         {
             sqlCnn.Open();
@@ -74,28 +65,46 @@ public class Sage500 : AcuConvert.Core.Interfaces.ILegacyConnector //AcuConvert.
         }
     }
 
+    private static SqlConnection MakeSqlConnection(LegacyConnectionContext type)
+    {
+        //Datasource
+        //InitCatalog
+        //UserID
+        //Password
+        string        connectionString;
+        SqlConnection sqlCnn;
+        string datasource = type
+                           .AuthenticationValues.FirstOrDefault(v =>
+                                string.Equals(v.Key, "Datasource", StringComparison.OrdinalIgnoreCase)).Value;
+        string initcat = type
+                        .AuthenticationValues.FirstOrDefault(v =>
+                             string.Equals(v.Key, "initcat", StringComparison.OrdinalIgnoreCase)).Value;
+        string userID = type
+                       .AuthenticationValues.FirstOrDefault(v =>
+                            string.Equals(v.Key, "userID", StringComparison.OrdinalIgnoreCase)).Value;
+        string password = type
+                         .AuthenticationValues.FirstOrDefault(v =>
+                              string.Equals(v.Key, "password", StringComparison.OrdinalIgnoreCase)).Value;
+
+        connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", datasource,
+            initcat, userID, password);
+
+        sqlCnn = new SqlConnection(connectionString);
+        return sqlCnn;
+    }
+
 
     public IEnumerable<Field> GetSchema(LegacyConnectionContext type)
     {
-
         string connectionString = null;
         SqlConnection sqlCnn;
         SqlCommand sqlCmd;
         List<Field> returnfields = new List<Field>();
 
-        string sql = type.Query;
-        //Datasource
-        //InitCatalog
-        //UserID
-        //Password
-        string datasource = type.AuthenticationValues["Datasource"];
-        string initcat = type.AuthenticationValues["InitCatalog"];
-        string userID = type.AuthenticationValues["UserID"];
-        string password = type.AuthenticationValues["Password"];
-
-        connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", datasource, initcat, userID, password);
-
-        sqlCnn = new SqlConnection(connectionString);
+        string sql = type
+                    .AuthenticationValues.FirstOrDefault(v =>
+                         string.Equals(v.Key, "Query", StringComparison.OrdinalIgnoreCase)).Value;
+        sqlCnn = MakeSqlConnection(type);
         try
         {
             sqlCnn.Open();

@@ -1,11 +1,29 @@
+using AcuConvert.Core.Interfaces;
+
 namespace AcuConvert;
 
 public partial class Form1 : Form
 {
-    public Form1()
+    private readonly ISyncRepository     _syncRepository;
+    private readonly ISyncWorker         _syncWorker;
+    private readonly IAcumaticaConnector _acumaticaConnector;
+    private readonly ILegacyConnector    _legacyConnector;
+
+    public Form1(ISyncRepository syncRepository,
+                 ISyncWorker syncWorker,
+                 IAcumaticaConnector acumaticaConnector,
+                 ILegacyConnector legacyConnector)
     {
+        _syncRepository       = syncRepository;
+        _syncWorker           = syncWorker;
+        _acumaticaConnector   = acumaticaConnector;
+        _legacyConnector = legacyConnector;
         InitializeComponent();
+        sConnectorConnectString
     }
+
+    public string sConnectorConnectString = "Data Source=(local);Initial Catalog=AcuConvert;User ID=sa;password=";
+    string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
     private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
     {
