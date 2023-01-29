@@ -58,6 +58,12 @@ partial class Form1
             this.txtSelectCustAddr = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabAP = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabGL = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -75,6 +81,8 @@ partial class Form1
             this.groupBox1.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.grpCustomerAddress.SuspendLayout();
+            this.tabAP.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -357,12 +365,76 @@ partial class Form1
             // 
             // tabAP
             // 
+            this.tabAP.Controls.Add(this.groupBox2);
             this.tabAP.Location = new System.Drawing.Point(4, 24);
             this.tabAP.Name = "tabAP";
             this.tabAP.Size = new System.Drawing.Size(1131, 656);
             this.tabAP.TabIndex = 2;
             this.tabAP.Text = "AP";
             this.tabAP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(11, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1117, 209);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Vendors";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 15);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Where";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(83, 126);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1028, 70);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "WHERE  a.CompanyID = \'JMS\' \r\nAND  IsNull(a.CustKey,0) <> 0 \r\nAND  a.Status = 1\r\n";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Select/From";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.Location = new System.Drawing.Point(83, 45);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(1028, 70);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.Text = resources.GetString("textBox2.Text");
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 20);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(111, 19);
+            this.checkBox2.TabIndex = 0;
+            this.checkBox2.Text = "Process Vendors";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // tabGL
             // 
@@ -457,6 +529,9 @@ partial class Form1
             this.tabPage7.ResumeLayout(false);
             this.grpCustomerAddress.ResumeLayout(false);
             this.grpCustomerAddress.PerformLayout();
+            this.tabAP.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -500,4 +575,10 @@ partial class Form1
     private TextBox txtSelectCustAddr;
     private CheckBox checkBox1;
     private DataGridView grdExceptions;
+    private GroupBox groupBox2;
+    private Label label3;
+    private TextBox textBox1;
+    private Label label4;
+    private TextBox textBox2;
+    private CheckBox checkBox2;
 }
