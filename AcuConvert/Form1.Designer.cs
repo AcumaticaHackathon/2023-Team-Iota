@@ -76,6 +76,7 @@ partial class Form1
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabAR.SuspendLayout();
@@ -538,11 +539,21 @@ partial class Form1
             this.button3.Text = "Refresh Source Schema";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(349, 693);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(160, 25);
+            this.button4.TabIndex = 24;
+            this.button4.Text = "Load Mapping from Excel";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 723);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -617,4 +628,5 @@ partial class Form1
     private Button button1;
     private Button button2;
     private Button button3;
+    private Button button4;
 }
