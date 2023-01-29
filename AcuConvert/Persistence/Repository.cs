@@ -84,5 +84,10 @@ namespace AcuConvert.Persistence
                 _conn.Query<SyncInstance>($"SELECT * FROM SyncInstance Where InstanceID = '{instanceID}'");
             return syncInstance?.FirstOrDefault();
         }
+
+        public AcumaticaConnectionContext GetDestConnectionSettings()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

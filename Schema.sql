@@ -50,16 +50,19 @@ BEGIN
 END   
 GO
 
+INSERT INTO SyncInstance(InstanceID,Descr,PluginName,AcuEndpointName,AcuEndpointVersion,AcuResourceName,AcuObjectName)
+VALUES ('Customer', 'Customer', 'Sage500', 'Customer','22.200.001', '', '')
+
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
-              WHERE TABLE_NAME = 'SourceQuerySetting')
+              WHERE TABLE_NAME = 'SourceQueryString')
 BEGIN
 
-   CREATE TABLE [dbo].SourceQuerySetting(
+   CREATE TABLE [dbo].SourceQueryString(
       InstanceID VARCHAR(15) NOT NULL FOREIGN KEY REFERENCES SyncInstance(InstanceID)
 	, SettingID VARCHAR(15) NOT NULL
 	, Value VARCHaR(1026) NOT NULL
 	
-	CONSTRAINT [SourceQuerySetting_PK] PRIMARY KEY ( [InstanceID], [SettingID] )
+	CONSTRAINT [SourceQueryString_PK] PRIMARY KEY ( [InstanceID], [SettingID] )
 
    )
 END   
@@ -79,6 +82,25 @@ BEGIN
    )
 END   
 GO
+
+
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustKey','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustID' ,'')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustName','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Status','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CreateDate','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','UpdateDate','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CustClassID','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','GLAcctNo','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine1','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','AddrLine2','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','City','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','StateID','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','CountryID','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Name','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','Phone','')
+Insert into SyncMapping (InstanceID, SourceField, DestField) Values ('Customer','EmailAddr','')
 
 IF NOT EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES
               WHERE TABLE_NAME = 'SyncRow')
