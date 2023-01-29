@@ -1,5 +1,6 @@
 using AcuConvert.Core.Interfaces;
 using AcuConvert.Core.Workers;
+using AcuConvert.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -30,10 +31,10 @@ static class Program
                     {
                         services.AddTransient<RecordReconciliator>();
                         services.AddTransient<ISyncWorker,SyncWorker>();
-                        
-                        // services.AddTransient<ISyncRepository,>();
+                        services.AddTransient<SyncConnectionBuilder>();
+                        services.AddTransient<ISyncRepository,Repository>();
                         // services.AddTransient<IAcumaticaConnector,>();
-                        // services.AddTransient<ILegacyConnector,>();
+                        services.AddTransient<ILegacyConnector,Sage500.Sage500>();
                         
                         services.AddTransient<Form1>();
                     });

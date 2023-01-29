@@ -17,6 +17,8 @@ namespace AcuConvert.Core.Interfaces
         IEnumerable<Field>                        GetSourceSchema(string instanceID);
         IEnumerable<Row>                          GetSyncDataSet(string  instanceID);
         IEnumerable<KeyValuePair<string, string>> GetSourceConnectionSettings();
+        AcumaticaConnectionContext                GetDestConnectionSettings();
         IEnumerable<KeyValuePair<string, string>> GetInstanceQuerySettings(string instanceID);
+        SyncInstance                              GetSyncInstance(string          instanceID);
     }
 }

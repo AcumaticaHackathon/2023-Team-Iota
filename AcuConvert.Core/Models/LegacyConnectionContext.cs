@@ -11,13 +11,13 @@ namespace AcuConvert.Core.Models
 {
     public class LegacyConnectionContext
     {
-        public LegacyConnectionContext(string query)
+        public LegacyConnectionContext()
         {
-            if (string.IsNullOrWhiteSpace(query)) throw new ArgumentNullException(nameof(query));
-            Query = query;
+            AuthenticationValues = new List<KeyValuePair<string, string>>();
+            QueryParameters      = new List<KeyValuePair<string, string>>();
         }
 
-        public Dictionary<string, string> AuthenticationValues { get; set; } = new();
-        public string                     Query                { get;  }
+        public ICollection<KeyValuePair<string, string>> AuthenticationValues { get; set; }
+        public ICollection<KeyValuePair<string, string>> QueryParameters { get; set; }
     }
 }
